@@ -2,8 +2,9 @@
     margin: 0;
     padding: 0;
     box-sizing: 0;
-    font-family: 'poppins', sans-serif;
+    font-family: "EB Garamond", serif;
 }
+
 
 /* Email Form */
 
@@ -52,3 +53,55 @@ form button{
     width: 150px;
     margin: 20px auto 0;
 }
+
+
+/* Navigation 1 */
+
+#nav1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #004831 ;
+}
+
+#nav1_right ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+#nav1_right li a {
+    display: block;
+    text-align: center;
+    padding: 30px 40px;
+    font-size: 30px;
+    color: #ffe4a6;
+    text-decoration: none;
+}
+
+#nav1_right li {
+    margin: 0;
+}
+
+#nav1 li a:hover {
+  background-color: #111;
+}
+
+#nav1_left {
+    font-weight: bold;
+    color: white;
+    font-size: 40px;
+}
+
+#nav1_logo {
+    margin-left: 40px;
+}
+
+
+
+
+
+
