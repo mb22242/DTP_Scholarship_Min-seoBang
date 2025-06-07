@@ -6,6 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Email Form Testing</title>
     <link rel="stylesheet" href="testing.css">
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init({
+                publicKey: "YucshvHaQuTYTuku4",
+            });
+        })();
+    </script>
 </head>
 <body>
     <div class="container">
@@ -19,20 +29,15 @@
 
     </div>
 
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script>
         function sendEmail(){
-            Email.send({
-                Host : "smtp-mail.outlook.com",
-                Username : "mb22242@my.westlake.school.nz",
-                Password : "b9rKeria",
-                To : 'mb22242@my.westlake.school.nz',
-                From : document.getElementById("email").value,
-                Subject : "Email Form Testing ",
-                Body : "Body Text"
-            }).then(
-            message => alert(message)
-            );
+            let parms = {
+                name : document.getElementById("name").value,
+                email : document.getElementById("email").value,
+                message : document.getElementById("message").value,
+            }
+            
+            emailjs.send("service_lirsgks","template_kxb4e5d",parms).then(alert('Email has been sent'))
         }
     </script>
 </body>
