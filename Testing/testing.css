@@ -78,7 +78,7 @@ form button{
     text-align: center;
     padding: 30px 40px;
     font-size: 30px;
-    color: #ffe4a6;
+    color: #FFF3D7;
     text-decoration: none;
 }
 
@@ -100,8 +100,129 @@ form button{
     margin-left: 40px;
 }
 
+/* Navigation 2 */
+
+.nav2 {
+    position: fixed;
+    display: block;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 60px;
+    background: #004831;
+    padding: 6px 14px;
+    z-index: 9;
+    transition: all 0.5s ease;
+}
+
+.nav2.active {
+    width: 275px;
+}
+
+.side_nav_top {
+    display: flex;
+    /* background: pink; */
+}
+
+.nav2 #login {
+    opacity: 0;
+    color: white;
+    background: #002c1e;
+    border: solid rgba(255, 255, 255, 0.514) 1px;
+    text-align: center;
+    padding: 10px 25px;
+    margin-top: 15px;
+    margin-left: 15px;
+    border-radius: 30px;
+}
+
+.nav2 .side_nav_top #menu {
+    position: absolute;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.nav2 .side_nav_top #menu {
+    text-align: center;
+}
+
+.side_nav_bottom {
+    margin-top: 75px;
+    display: block;
+    text-align: center;
+    /* background: pink; */
+}
+
+.nav2 h2 {
+    color: white;
+    opacity: 0;
+    font-size: 40px;
+}
+
+.nav2 ul li {
+    position: relative;
+    list-style-type: none;
+    margin: 8px 0;
+}
+
+.nav2 ul li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    transition: all 0.4s ease;
+    color: white;
+    opacity: 0;
+    pointer-events: none;
+    font-size: 30px;
+}
+
+.nav2.active ul li a,
+.nav2.active ul li h2,
+.nav2.active #login {
+    opacity: 1;
+    pointer-events: auto;
+}
 
 
+/* Menu icon */
+
+#menu {
+    position: absolute;
+    top: 10px;
+    right: 18px;
+    width: fit-content;
+    height: fit-content;
+    padding: 0;
+    margin-top: 10px;
+    /* background: pink; */
+}
+
+.bar1,
+.bar2,
+.bar3 {
+    width: 40px;
+    height: 6.5px;
+    background-color: #ffffff;
+    margin: 6px 6px;
+    transition: 0.4s;
+    border-radius: 12px;
+}
+
+.change .bar1 {
+    transform: translate(0, 12.5px) rotate(-45deg);
+}
+
+.change .bar2 {
+    opacity: 0;
+}
+
+.change .bar3 {
+    transform: translate(0, -12.5px) rotate(45deg);
+}
 
 
 
