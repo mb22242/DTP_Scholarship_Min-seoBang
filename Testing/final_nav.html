@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Nav</title>
+    <link rel="stylesheet" href="final_nav.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav id="nav-horizontal">
+        <div id="nav-horizontal_left">
+            <div id="logo">LOGO</div>
+        </div>
+        
+        <div id="nav-horizontal_right">
+            <div id="login">login</div>
+        </div>
+    </nav>
+
+
+    <div id="side-menu">
+        <div class="side-menu_top">
+            <div id="menu">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
+        </div>
+
+        <div class="side-menu_bottom">
+            <ul>
+                <li><h2>My Menu:</h2></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Claim</a></li>
+                <li><a href="#">Report</a></li>
+                <li> <a href="#">Gallery</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        let sidebar = document.querySelector('.nav2');
+        let menu = document.querySelector('#menu');
+
+        menu.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            menu.classList.toggle("change");
+        });
+    </script>
+
+</body>
+</html>
