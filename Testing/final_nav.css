@@ -10,18 +10,16 @@
     justify-content: space-between;
     align-items: center;
     background-color: #002c1e ;
-    padding: 20px;
+    padding: 10px;
 }
 
 #nav-horizontal_right #login {
-    opacity: 0;
     color: white;
+    margin-right: 30px;
     background: #002c1e;
     border: solid rgba(255, 255, 255, 0.514) 2px;
     text-align: center;
     padding: 10px 25px;
-    margin-top: 15px;
-    margin-left: 15px;
     border-radius: 30px;
     font-weight: bold;
     font-size: 20px;
@@ -41,22 +39,24 @@
     color: white;
     font-size: 40px;
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #nav-horizontal_left #logo {
-    width: 100px;
+    margin-left: 30px;
+    width: 80px;
 }
 
 #logo_txt {
     display: inline-block;
-    background: pink;
+    margin-left: 10px;
+    /* background: pink; */
 }
 
 #logo_txt h2 {
     line-height: 1;
-    font-size: 45px;
-    vertical-align: middle;
-
+    font-size: 32px;
 }
 
 /* Vertical */
