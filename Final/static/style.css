@@ -165,6 +165,10 @@
     /* background: pink; */
 }
 
+#menu:hover {
+    cursor: pointer;
+}
+
 .bar1,
 .bar2,
 .bar3 {
