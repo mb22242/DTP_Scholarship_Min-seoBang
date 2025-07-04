@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Base</title>
+    <title>WBHS Lost Property</title>
     <link rel="stylesheet" href="static/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,6 +12,7 @@
     {% block head %} {% endblock %} 
 </head>
 <body>
+
     <nav id="nav-horizontal">
         <div id="nav-horizontal_left">
             <img id="logo" src="{{ url_for('static', filename='images/logo.png') }}" alt="logo">
@@ -25,7 +26,6 @@
             <div id="login">login</div>
         </div>
     </nav>
-
 
     <div class="side-menu">
         <div class="side-menu_top">
@@ -49,23 +49,23 @@
 
  
     <div class="page_container">
-        
+
+        <div class="login_form_container" id="login_form">
+            <h2>Admin Login</h2>
+            <form method="POST">
+                <input type="text" name="username" placeholder="Username" required><br>
+                <input type="password" name="password" placeholder="Password" required><br>
+                <button id='login' mtype="submit">Login</button>
+            </form>
+        </div>
 
         {% block body %} {% endblock %}
         
     </div>
 
     <div style="width:100px; height: 2000px;"></div>
-    
-    <script>
-        let sidebar = document.querySelector('.side-menu');
-        let menu = document.querySelector('#menu');
 
-        menu.addEventListener('click', () => {
-            sidebar.classList.toggle('active');
-            menu.classList.toggle("change");
-        });
-    </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 
 </body>
 </html>

@@ -17,7 +17,7 @@ app.secret_key = SECRET_KEY
 # Setup Flask-Login
 login_manager = LoginManager()
 login_manager.init_app(app)
-login_manager.login_view = 'login'
+login_manager.login_view = 'index'
 
 
 # User class representing the single admin
@@ -33,13 +33,9 @@ def load_user(user_id):
     return None
 
 
-@app.route('/')
+
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    return redirect(url_for('login'))
-
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -47,7 +43,7 @@ def login():
             login_user(AdminUser())
             return redirect(url_for('admin'))
         flash('Invalid credentials', 'error')
-    return render_template('login.html')
+    return render_template('index.html')
 
 
 @app.route('/admin')
@@ -61,3 +57,7 @@ def admin():
 def logout():
     logout_user()
     return redirect(url_for('login'))
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
