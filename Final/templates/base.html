@@ -27,43 +27,45 @@
         </div>
     </nav>
 
-    <div class="side-menu">
-        <div class="side-menu_top">
-            <div id="menu">
-                <div class="bar1"></div>
-                <div class="bar2"></div>
-                <div class="bar3"></div>
+    <div class="main_content">
+
+        <div class="side-menu">
+            <div class="side-menu_top">
+                <div id="menu">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </div>
+            </div>
+
+            <div class="side-menu_bottom">
+                <ul>
+                    <li><h2>My Menu:</h2></li>
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                    <li><a href="{{ url_for('claim') }}">Claim</a></li>
+                    <li><a href="{{ url_for('report') }}">Report</a></li>
+                </ul>
             </div>
         </div>
 
-        <div class="side-menu_bottom">
-            <ul>
-                <li><h2>My Menu:</h2></li>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Claim</a></li>
-                <li><a href="#">Report</a></li>
-                <li> <a href="#">Gallery</a></li>
-            </ul>
-        </div>
-    </div>
+    
+        <div class="page_container">
 
- 
-    <div class="page_container">
+            <div class="login_form_container" id="login_form">
+                <h2>Admin Login</h2>
+                <form method="POST">
+                    <input type="text" name="username" placeholder="Username" required><br>
+                    <input type="password" name="password" placeholder="Password" required><br>
+                    <button id='login' mtype="submit">Login</button>
+                </form>
+            </div>
 
-        <div class="login_form_container" id="login_form">
-            <h2>Admin Login</h2>
-            <form method="POST">
-                <input type="text" name="username" placeholder="Username" required><br>
-                <input type="password" name="password" placeholder="Password" required><br>
-                <button id='login' mtype="submit">Login</button>
-            </form>
+            {% block body %} {% endblock %}
+            
         </div>
 
-        {% block body %} {% endblock %}
-        
     </div>
-
-    <div style="width:100px; height: 2000px;"></div>
+    <!-- <div style="width:100px; height: 2000px;"></div> -->
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 

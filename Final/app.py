@@ -45,6 +45,15 @@ def index():
         flash('Invalid credentials', 'error')
     return render_template('index.html')
 
+@app.route('/claim')
+def claim():
+    return render_template('claim.html')
+
+
+@app.route('/report')
+def report():
+    return render_template('report.html')
+
 
 @app.route('/admin')
 @login_required
