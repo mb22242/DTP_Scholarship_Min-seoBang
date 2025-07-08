@@ -15,7 +15,7 @@
     padding: 10px;
 }
 
-#nav-horizontal_right #login {
+#nav-horizontal_right .login_logout_button {
     color: white;
     margin-right: 30px;
     background: #002c1e;
@@ -28,7 +28,7 @@
     transition: all 0.4s ease;
 }
 
-#nav-horizontal_right #login:hover {
+#nav-horizontal_right .login_logout_button:hover {
     background: white;
     color: #002c1e;
     border: solid 2px #002c1e;
@@ -227,8 +227,6 @@
 }
 
 
-
-
 /* Report */
 
 .form_container{
@@ -276,4 +274,34 @@
     cursor: pointer;
     width: 150px;
     margin: 20px auto 0;
+}
+
+
+/* ADMIN */
+
+/* Admin Navigation  */
+
+#admin_nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #004831 ;
+}
+
+
+#dashboard_link a {
+    display: block;
+    text-align: center;
+    padding: 30px 40px;
+    font-size: 30px;
+    color: #FFF3D7;
+    text-decoration: none;
+}
+  
+#dashboard_link a:hover {
+    transition: all 0.8s ease;
+    border-radius: 15px;
+    font-size: 32px;
+    text-decoration: underline;
+
 }
