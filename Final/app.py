@@ -42,16 +42,22 @@ def index():
         if username == ADMIN_USERNAME and check_password_hash(ADMIN_PASSWORD_HASH, password):
             login_user(AdminUser())
             return redirect(url_for('admin'))
-        flash('Invalid credentials', 'error')
+        flash('Invalid credentials', 'error') 
+        # add flash messages!
     return render_template('index.html')
 
-@app.route('/claim')
+
+@app.route('/claim', methods = ['GET', 'POST'])
 def claim():
+    if request.method == 'POST':
+        return redirect(url_for('index'))
     return render_template('claim.html')
 
 
-@app.route('/report')
+@app.route('/report', methods = ['GET', 'POST'])
 def report():
+    if request.method == 'POST':
+        return redirect(url_for('index'))
     return render_template('report.html')
 
 
