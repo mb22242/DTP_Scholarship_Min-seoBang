@@ -15,15 +15,17 @@
 
 {% block body %}
 
-<h2 id="report_title">Fill in the form to report a lost item you found</h2>
+<h2 class="page_header">Report a Found Item</h2>
+
+<h2 id="report_title">Fill in the form to report the lost item you found</h2>
 
 
 <div class="form_container">
     <form onsubmit="sendEmail(); reset(); return false">
-        <h3>Please enter Name, Email and Description of found item:</h3>
+        <h3>Please enter your Name, your Email and a Description of your found item:</h3>
         <input type="text" id="name" placeholder="Name:" required>
         <input type="email" id="email" placeholder="Email:" required>
-        <textarea id="message" rows="4" placeholder="Message:"></textarea>
+        <textarea id="message" rows="4" placeholder="Description of item:"></textarea>
         <br>
         <h3>Our team will let you know as soon as we are ready to collect your found item.</h3>
         <button type="submit">Send</button>
