@@ -389,6 +389,21 @@
     margin: 20px auto 0;
 }
 
+/* Index */
+
+#index_text {
+    width: 75%;
+    text-align: left;
+    margin: 0 auto;
+    font-size: 20px;
+}
+
+#index_text h3 {
+    font-size: 35px;
+    color: #004831;
+    margin-bottom: 20px;
+}
+
 
 
 /* ADMIN */
