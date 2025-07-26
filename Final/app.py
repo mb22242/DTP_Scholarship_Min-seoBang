@@ -5,41 +5,29 @@ from dotenv import load_dotenv
 import os
 import sqlite3
 
+# For Login System
 load_dotenv()
 ADMIN_USERNAME = os.getenv("ADMIN_USERNAME")
 ADMIN_PASSWORD_HASH = os.getenv("ADMIN_PASSWORD_HASH")
 SECRET_KEY = os.getenv("SECRET_KEY")
 
+# For Database
+UPLOAD_FOLDER = 'Final/static/uploads'
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
 
 app = Flask(__name__)
 app.secret_key = SECRET_KEY
 
-UPLOAD_FOLDER = 'Final/static/uploads'
-os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
-# Setup Flask-Login
+# Flask Login Setup
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'index'
 
-def init_db():
-    conn = get_db_connection()
-    conn.execute('''
-        CREATE TABLE IF NOT EXISTS items (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            item_name TEXT,
-            name TEXT,
-            description TEXT,
-            image_filename TEXT,
-            category TEXT
-        )
-    ''')
-    conn.commit()
-    conn.close()
 
-
-# User class representing the single admin
 class AdminUser(UserMixin):
+    # There will only be 1 user, which will be the Admin. 
     id = 1
     username = ADMIN_USERNAME
 
@@ -49,6 +37,22 @@ def load_user(user_id):
     if user_id == "1":
         return AdminUser()
     return None
+
+# No longer needed since the database has been created. 
+# def init_db():
+#     conn = get_db_connection()
+#     conn.execute('''
+#         CREATE TABLE IF NOT EXISTS items (
+#             id INTEGER PRIMARY KEY AUTOINCREMENT,
+#             item_name TEXT,
+#             name TEXT,
+#             description TEXT,
+#             image_filename TEXT,
+#             category TEXT
+#         )
+#     ''')
+#     conn.commit()
+#     conn.close()
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -62,6 +66,7 @@ def index():
         flash('Invalid credentials', 'error') 
         # add flash messages!
     return render_template('index.html')
+
 
 
 @app.route('/claim', methods = ['GET', 'POST'])
