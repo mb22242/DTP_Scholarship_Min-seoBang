@@ -312,7 +312,6 @@
     cursor: pointer;
     font-size: 27px;
     color: rgb(193, 33, 33);
-    transition: ease 0.8s;
 }
 
 .show {
