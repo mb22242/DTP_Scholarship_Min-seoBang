@@ -1,0 +1,38 @@
+{% extends 'base_admin.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<h1>Upload New Item</h1>
+    <form method="post" enctype="multipart/form-data">
+        <label>Item name:</label><br>
+        <input type="text" name="item_name"><br><br>
+
+        <label>Name:</label><br>
+        <input type="text" name="name"><br><br>
+
+
+        <label>Description:</label><br>
+        <textarea name="description"></textarea><br><br>
+
+        <label>Category:</label><br>
+        <select name="category">
+            <option value="">-- Select Category --</option>
+            <option value="Clothing & Accessories">Clothing & Accessories</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Stationery">Stationery</option>
+            <option value="Personal Items">Personal Items</option>
+            <option value="Jewellery">Jewellery</option>
+            <option value="Sports Equipment">Sports Equipment</option>
+            <option value="Miscellaneous">Miscellaneous</option>
+        </select>
+
+
+        <label>Image:</label><br>
+        <input type="file" name="image"><br><br>
+
+        <input type="submit" value="Upload">
+    </form>
+{% endblock %}

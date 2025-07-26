@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADMIN</title>
-    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    {% block head %} {% endblock %} 
 </head>
 <body>
 
@@ -21,14 +22,16 @@
         </div>
         
 
-        <div id="dashboard_link">
+        <!-- <div id="dashboard_link">
             <a href="{{ url_for('admin') }}">Return to Dashboard</a>
-        </div>
+        </div> -->
 
         <div id="nav-horizontal_right">
             <div id="logout_button">logout</div>
         </div>
     </nav>
+
+    {% block body %} {% endblock %}
 
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
