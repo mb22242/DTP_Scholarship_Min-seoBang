@@ -5,6 +5,19 @@
 {% endblock %}
 
 {% block body %}
+
+
+
+<form method="GET" action="{{ url_for('admin') }}">
+    <label>Search</label>
+    <input type="text" name="item" id="item" value="Name:" onclick="if(this.value=='Name:'){this.value='';}" onblur="if(this.value==''){this.value='Name:';}">
+
+    <button type="submit">Search</button>
+
+</form>
+
+
+
 <h1>Uploaded Items</h1>
     <a href="/admin/upload">Upload New Item</a>
     <br><br><br>
