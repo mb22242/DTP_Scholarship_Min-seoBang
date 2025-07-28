@@ -83,39 +83,30 @@ def report():
     return render_template('report.html')
 
 
-@app.route('/admin')
+@app.route('/admin', methods=('GET','POST'))
 @login_required
 def admin():
     conn = get_db_connection()
+    items = conn.execute('SELECT id, item_name, name, description, image_filename, category FROM items').fetchall()
+    conn.close()
+    return render_template('admin.html', username=current_user.username, items=items)
+
+
+@app.route('/search')
+def search():
     item = request.args.get('item')
+    conn = get_db_connection()
     
     if item != 'Name:':
         sql = 'SELECT * FROM items WHERE item_name = ?'
         items = conn.execute(sql, (item,)).fetchall()
-    
+        
     else:
-        # sql = 'SELECT * FROM items WHERE item_name = ?'
-        # items = conn.execute(sql).fetchall()
         items = conn.execute('SELECT id, item_name, name, description, image_filename, category FROM items').fetchall()
     
     conn.close()
-    return render_template('admin.html', username=current_user.username, items=items)
-
-# @app.route('/search')
-# def search():
-#     item = request.args.get('item')
-#     conn = get_db_connection
     
-#     if item != 'Name:':
-#         sql = 'SELECT * FROM items WHERE item_name = ?'
-#         items = conn.execute(sql, (item,)).fetchall()
-#     # else:
-#     #     sql = 'SELECT * FROM items WHERE item_name = ?'
-#     #     items = conn.execute(sql).fetchall()
-    
-#     conn.close()
-    
-#     return render_template('admin.html', items=items)
+    return render_template('admin.html', items=items)
 
 
 @app.route('/admin/upload', methods=['GET', 'POST'])
