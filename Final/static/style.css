@@ -478,6 +478,9 @@ body {
     box-sizing: border-box;
     max-width: 100%;
     overflow-x: hidden;
+    text-align: center;
+    box-shadow: 2px 2px #c1c0c0;
+
 }
 
 #admin_gallery_item {
@@ -488,13 +491,31 @@ body {
     border-radius: 12px;
     padding: 12px;
     box-sizing: border-box;
+    overflow-wrap: break-word;
 }
+
+#admin_gallery_item h2 {
+    font-size: 30px;
+}
+
+
+#search_box {
+    background: white;
+    border: 2px black solid;
+    display: flex;
+    flex-direction: column;
+    padding: 2vw 3vw;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 10px;
+}
+
 
 /* Image Styling */
 #admin_gallery_image {
-    width: 100%;
-    height: auto;
     border-radius: 10px;
     border: 2px solid #004d3c;
     object-fit: cover;
+    width: 90%;
+    height: 300px;
 }

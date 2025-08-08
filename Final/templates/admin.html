@@ -12,7 +12,7 @@
     <label>Search</label>
     <input type="text" name="item" id="item" value="Name:" onclick="if(this.value=='Name:'){this.value='';}" onblur="if(this.value==''){this.value='Name:';}">
 
-    <button type="submit">Search</button>
+    <button id="search_box" type="submit">Search</button>
 
 </form>
 
@@ -27,7 +27,7 @@
         {% for item in items %}
             <div id="admin_gallery_item">
                 <h2>{{ item['item_name'] }}</h2>
-                <img id='admin_gallery_image' src="{{ url_for('static', filename='uploads/' + item['image_filename']) }}" width="300" height="300">
+                <img id='admin_gallery_image' src="{{ url_for('static', filename='uploads/' + item['image_filename']) }}">
                 <p>{{ item['name'] }}</p>
                 <p>{{ item['description'] }}</p>
                 <p>{{ item['category'] }}</p>
