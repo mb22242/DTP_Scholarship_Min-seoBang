@@ -97,7 +97,7 @@ def search():
     item = request.args.get('item')
     conn = get_db_connection()
     
-    if item != 'Name:':
+    if item != 'Search:':
         sql = 'SELECT * FROM items WHERE item_name = ?'
         items = conn.execute(sql, (item,)).fetchall()
         

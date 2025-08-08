@@ -506,12 +506,21 @@ body {
     font-size: 30px;
 }
 
-#item_buttons {
-    font-size: 20px;
-    padding: 20px;
+#admin_page_container .item_button {
+    font-size: 15px;
+    padding: 5px 10px;
+    border-radius: 10px;
     color: black;
     border: 2px solid black;
+}
 
+#item_buttons {
+    display: flex;
+    height: 20px;
+    width: fit-content;
+    background: black;
+    align-items: center;
+    
 }
 
 #search_box {
@@ -529,6 +538,8 @@ body {
 
 
 /* Image Styling */
+
+
 #admin_gallery_image {
     border-radius: 10px;
     border: 2px solid #004d3c;
