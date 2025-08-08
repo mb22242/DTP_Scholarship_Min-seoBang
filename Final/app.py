@@ -71,9 +71,14 @@ def index():
 
 @app.route('/claim', methods = ['GET', 'POST'])
 def claim():
+    
     if request.method == 'POST':
         return redirect(url_for('index'))
-    return render_template('claim.html')
+    
+    conn = get_db_connection()
+    items = conn.execute('SELECT id, item_name, name, description, image_filename, category FROM items').fetchall()
+    conn.close()
+    return render_template('claim.html', items=items)
 
 
 @app.route('/report', methods = ['GET', 'POST'])
@@ -100,13 +105,17 @@ def search():
     if item != 'Search:':
         sql = 'SELECT * FROM items WHERE item_name = ?'
         items = conn.execute(sql, (item,)).fetchall()
+
+    elif item == '':
+        sql = 'SELECT * FROM items'
+        items = conn.execute(sql, (item,)).fetchall()
         
     else:
         items = conn.execute('SELECT id, item_name, name, description, image_filename, category FROM items').fetchall()
     
     conn.close()
     
-    return render_template('admin.html', items=items)
+    return render_template('claim.html', items=items)
 
 
 @app.route('/admin/upload', methods=['GET', 'POST'])

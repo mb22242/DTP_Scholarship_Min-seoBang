@@ -467,7 +467,7 @@ body {
 
 /* Gallery Container */
 
-#admin_page_container {
+#claim_page_container {
     display: flex;
     flex-wrap: wrap;
     padding: 20px;
@@ -482,31 +482,31 @@ body {
 
 }
 
-#admin_gallery_item {
+#claim_gallery_item {
     /* flex: 0 0 calc(33.333% - 20px); /* Fixed width per item */
     /* max-width: calc(33.333% - 20px); */ 
     background-color: #ffffff;
     border: 1px solid #c1c0c0;
     border-radius: 12px;
     padding: 12px;
-    width: 500px;
+    width: 400px;
     box-sizing: border-box;
     overflow-wrap: break-word;
     margin: 20px;
     border: 3px solid #004831;
 }
 
-#admin_gallery_item:hover{
+#claim_gallery_item:hover{
     box-shadow: 2px 2px 2px #ed0000;
     transition-duration: 0.4s;
     cursor: pointer;
 }
 
-#admin_gallery_item h2 {
+#claim_gallery_item h2 {
     font-size: 30px;
 }
 
-#admin_page_container .item_button {
+#claim_page_container .item_button {
     font-size: 15px;
     padding: 5px 10px;
     border-radius: 10px;
@@ -526,26 +526,30 @@ body {
 #search_box {
     background: white;
     border: 2px black solid;
-    display: flex;
-    flex-direction: column;
     padding: 2vw 3vw;
     width: 500px;
     height: 10px;
-    max-width: 600px;
     border-radius: 10px;
     font-size: 30px;
 }
 
+#search_menu {
+    width: 100%;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
 
 /* Image Styling */
 
 
-#admin_gallery_image {
+#claim_gallery_image {
     border-radius: 10px;
     border: 2px solid #004d3c;
     object-fit: cover;
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
 }
 
 
