@@ -97,25 +97,53 @@ def admin():
     return render_template('admin.html', username=current_user.username, items=items)
 
 
+# @app.route('/search')
+# def search():
+#     item = request.args.get('item')
+#     raw_item = item.replace(' ', '').lower()
+#     # print(raw_item)
+
+#     conn = get_db_connection()
+    
+#     if raw_item != 'search:':
+#         sql = 'SELECT * FROM items WHERE item_name = ?'
+#         items = conn.execute(sql, (item,)).fetchall()
+
+#     else:
+#         #If nothing was searched for, then print out everything. 
+#         sql = 'SELECT * FROM items'
+#         items = conn.execute(sql).fetchall()
+        
+#     # items = conn.execute('SELECT id, item_name, name, description, image_filename, category FROM items').fetchall()
+    
+#     conn.close()
+    
+#     return render_template('claim.html', items=items)
+
+
 @app.route('/search')
 def search():
-    item = request.args.get('item')
-    conn = get_db_connection()
-    
-    if item != 'Search:':
-        sql = 'SELECT * FROM items WHERE item_name = ?'
-        items = conn.execute(sql, (item,)).fetchall()
+    item = request.args.get('item', '')
+    raw_item = item.replace(' ', '').lower()
 
-    elif item == '':
-        sql = 'SELECT * FROM items'
-        items = conn.execute(sql, (item,)).fetchall()
-        
+    conn = get_db_connection()
+
+    if raw_item and raw_item != 'search:':
+        # Execute search query first
+        sql = 'SELECT * FROM items WHERE item_name LIKE ? COLLATE NOCASE'
+        items = conn.execute(sql, (f'%{item}%',)).fetchall()
+
+        if not items:
+            # No matches found: flash message and show all items
+            flash('No matches were found.')
+            items = conn.execute('SELECT * FROM items').fetchall()
     else:
-        items = conn.execute('SELECT id, item_name, name, description, image_filename, category FROM items').fetchall()
-    
+        # Show all items if no search term or placeholder
+        items = conn.execute('SELECT * FROM items').fetchall()
+
     conn.close()
-    
     return render_template('claim.html', items=items)
+
 
 
 @app.route('/admin/upload', methods=['GET', 'POST'])
