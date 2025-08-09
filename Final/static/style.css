@@ -7,6 +7,12 @@
     font-family: "EB Garamond", serif;
 }
 
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
 #nav-horizontal {
     display: flex;
     justify-content: space-between;
@@ -331,7 +337,6 @@
 }
 
 /* Report */
-
 #report_title {
     text-align: center;
     font-size: 30px;
@@ -403,37 +408,14 @@
     margin-bottom: 20px;
 }
 
-
-
 /* ADMIN */
-
 /* Admin Navigation  */
-
 #admin_nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #004831 ;
 }
-
-
-#dashboard_link a {
-    display: block;
-    text-align: center;
-    padding: 30px 40px;
-    font-size: 30px;
-    color: #FFF3D7;
-    text-decoration: none;
-}
-  
-#dashboard_link a:hover {
-    transition: all 0.8s ease;
-    border-radius: 15px;
-    font-size: 32px;
-    text-decoration: underline;
-
-}
-
 
 /* Admin Gallery */
 
@@ -459,26 +441,70 @@
     border-radius: 15px;
 } */
 
-body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-}
-
-/* Gallery Container */
+/* Claim Page */
 
 #claim_page_container {
+    width: 100%;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Search Menu */
+#search_box {
+    background: white;
+    border: 2px black solid;
+    padding: 20px 30px;
+    width: 400px;
+    height: 10px;
+    margin: 25px;
+    border-radius: 10px;
+    font-size: 30px;
+}
+
+/* Filter Buttons */
+#filter_button_container{
+    display: flex;
+    margin: 0 auto;
+    width: fit-content;
+    height: fit-content;
+    /* background: black; */
+}
+
+.filter-btn {
+    border-radius: 25px;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0px 5px;
+    background-color: #004831;
+    color: white;
+
+}
+
+/* Flash */
+.flash_message {
+    padding: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    width: 89.5%;
+    margin: 0 auto;
+    margin-top: 40px;
+    border-radius: 15px;
+    background-color: #ff0a0ab5;
+}
+
+/* Gallery */
+#claim_gallery_container {
     display: flex;
     flex-wrap: wrap;
-    padding: 20px;
     justify-content: flex-start;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-sizing: border-box;
-    width: fit-content;
-    overflow-x: hidden;
-    text-align: center;
-    background-color: black;
+    width: 1375px;
+    margin: 0 auto;
+    margin-top: 40px;
+    margin-bottom: 200px;
+    /* border: 2px solid black; */
 }
 
 #claim_gallery_item {
@@ -487,11 +513,9 @@ body {
     background-color: #ffffff;
     border: 1px solid #c1c0c0;
     border-radius: 12px;
-    padding: 12px;
-    width: 400px;
-    box-sizing: border-box;
+    width: 420px;
     overflow-wrap: break-word;
-    margin: 20px;
+    margin: 16px;
     border: 3px solid #004831;
 }
 
@@ -505,7 +529,17 @@ body {
     font-size: 30px;
 }
 
-#claim_page_container .item_button {
+#claim_gallery_image {
+    border-radius: 10px;
+    border: 2px solid #004d3c;
+    object-fit: cover;
+    width: 300px;
+    height: 300px;
+}
+
+
+/* For ADMIN PAGE but keep for now*/
+#claim_gallery_container .item_button {
     font-size: 15px;
     padding: 5px 10px;
     border-radius: 10px;
@@ -522,61 +556,3 @@ body {
     align-items: center;
 }
 
-#search_box {
-    background: white;
-    border: 2px black solid;
-    padding: 20px 30px;
-    width: 400px;
-    height: 10px;
-    margin: 25px;
-    border-radius: 10px;
-    font-size: 30px;
-}
-
-#search_menu {
-    width: 100%;
-    display: block;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin: 25px;
-}
-
-
-.flash_message {
-    padding: 12px;
-    font-size: 20px;
-    margin: 10px;
-    border-radius: 5px;
-    font-weight: bold;
-}
-
-/* Image Styling */
-
-
-#claim_gallery_image {
-    border-radius: 10px;
-    border: 2px solid #004d3c;
-    object-fit: cover;
-    width: 300px;
-    height: 300px;
-}
-
-
-/* Filter Buttons */
-#filter_button_container{
-    width: 100%;
-    height: fit-content;
-    text-align: center;
-    justify-content: center;
-}
-
-.filter-btn {
-    border-radius: 25px;
-    padding: 12px;
-    font-size: 17px;
-    margin: 0px 5px;
-    background-color: #002c1e;
-    color: white;
-
-}

@@ -7,52 +7,46 @@
 {% block body %}
 <h2 class="page_header">Claim your Lost Item</h2>
 
-<div id="search_menu">
+<div class="claim_page_container">
     <form method="GET" action="{{ url_for('search') }}">
         <input id="search_box" type="text" name="item" id="item" value="Search:" onclick="if(this.value=='Search:'){this.value='';}" onblur="if(this.value==''){this.value='Search:';}">
     </form>
 
-    <form method="GET" action="{{ url_for('search') }}">
-        <div id="filter_button_container">
-            <button type="button" class="filter-btn" data-category="Clothing and Accessories">Clothing and Accessories</button>
-            <button type="button" class="filter-btn" data-category="Electronics">Electronics</button>
-            <button type="button" class="filter-btn" data-category="Stationery">Stationery</button>
-            <button type="button" class="filter-btn" data-category="Personal Items">Personal Items</button>
-            <button type="button" class="filter-btn" data-category="Jewellery">Jewellery</button>
-            <button type="button" class="filter-btn" data-category="Sports Equipment">Sports Equipment</button>
-            <button type="button" class="filter-btn" data-category="Miscellaneous">Miscellaneous</button>
+    <div id="filter_button_container">
+        <button type="button" class="filter-btn" data-category="Clothing and Accessories">Clothing and Accessories</button>
+        <button type="button" class="filter-btn" data-category="Electronics">Electronics</button>
+        <button type="button" class="filter-btn" data-category="Stationery">Stationery</button>
+        <button type="button" class="filter-btn" data-category="Personal Items">Personal Items</button>
+        <button type="button" class="filter-btn" data-category="Jewellery">Jewellery</button>
+        <button type="button" class="filter-btn" data-category="Sports Equipment">Sports Equipment</button>
+        <button type="button" class="filter-btn" data-category="Miscellaneous">Miscellaneous</button>
 
-            <!-- <button id="filter">Clothing and Accessories</button>
-            <button id="filter">Electronics</button>
-            <button id="filter">Stationery</button>
-            <button id="filter">Personal Items</button>
-            <button id="filter">Jewellery</button>
-            <button id="filter">Sports Equipment</button>
-            <button id="filter">Miscellaneous</button> -->
-        </div>
-    </form>
-</div>
-
-{% for message in get_flashed_messages() %}
-    <div class="flash_message" style="background-color: #f8d7da; color:#000000; border: 2px solid #f5c6cb">
-        {{ message }}
+        <!-- <button id="filter">Clothing and Accessories</button>
+        <button id="filter">Electronics</button>
+        <button id="filter">Stationery</button>
+        <button id="filter">Personal Items</button>
+        <button id="filter">Jewellery</button>
+        <button id="filter">Sports Equipment</button>
+        <button id="filter">Miscellaneous</button> -->
     </div>
-{% endfor %}
 
-    
-<div id="claim_page_container">
-
-    {% for item in items %}
-        <div id="claim_gallery_item">
-            <h2>{{ item['item_name'] }}</h2>
-            <img id='claim_gallery_image' src="{{ url_for('static', filename='uploads/' + item['image_filename']) }}"> 
-            <h3>Description: </h3>
-            <p>{{ item['description'] }}</p>
+    {% for message in get_flashed_messages() %}
+        <div class="flash_message">
+            {{ message }}
         </div>
     {% endfor %}
 
+    <div id="claim_gallery_container">
+        {% for item in items %}
+            <div id="claim_gallery_item">
+                <h2>{{ item['item_name'] }}</h2>
+                <img id='claim_gallery_image' src="{{ url_for('static', filename='uploads/' + item['image_filename']) }}"> 
+                <h3>Description: </h3>
+                <p>{{ item['description'] }}</p>
+            </div>
+        {% endfor %}
+    </div>
 </div>
-
 
 
 {% endblock %}

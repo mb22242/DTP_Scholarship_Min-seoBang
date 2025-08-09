@@ -135,7 +135,7 @@ def search():
 
         if not items:
             # No matches found: flash message and show all items
-            flash('No matches were found.')
+            flash('No matching items were found')
             items = conn.execute('SELECT * FROM items').fetchall()
     else:
         # Show all items if no search term or placeholder
