@@ -71,7 +71,6 @@ def index():
 
 @app.route('/claim', methods = ['GET', 'POST'])
 def claim():
-    
     if request.method == 'POST':
         return redirect(url_for('index'))
     
@@ -121,7 +120,7 @@ def admin():
 #     return render_template('claim.html', items=items)
 
 
-@app.route('/search')
+@app.route('/search', methods=['GET', 'POST'])
 def search():
     item = request.args.get('item', '')
     raw_item = item.replace(' ', '').lower()
