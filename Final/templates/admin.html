@@ -27,11 +27,11 @@
 <a href="/admin/upload">Upload New Item</a>
 <br><br><br>
 
-<div id="claim_page_container">
+<div id="admin_page_container">
     {% for item in items %}
-        <div id="claim_gallery_item">
+        <div id="admin_gallery_item">
             <h2>{{ item['item_name'] }}</h2>
-            <img id='claim_gallery_image' src="{{ url_for('static', filename='uploads/' + item['image_filename']) }}">
+            <img id='admin_gallery_image' src="{{ url_for('static', filename='uploads/' + item['image_filename']) }}">
             <p>{{ item['name'] }}</p>
             <p>{{ item['description'] }}</p>
             <p>{{ item['category'] }}</p>
