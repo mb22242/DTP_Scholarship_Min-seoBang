@@ -1,7 +1,13 @@
 {% extends 'base.html' %}
 
 {% block head %}
+<script src="https://kit.fontawesome.com/763801ca06.js" crossorigin="anonymous"></script>
+{% endblock %}
 
+{% block nav %}
+<div id="nav-horizontal_right">
+    <div id="login_button">login</div>
+</div>
 {% endblock %}
 
 {% block body %}
@@ -15,11 +21,11 @@
 
 <div id="index_text">
     <h3>Why use this site? </h3>
-    <p>High school comes with an increased responsibility of managing assignments, exams and extracurricular activities. With so much going on, it is completely normal to occasionally misplace your belongings. This system was developed to help you recover your lost items efficiently, and securely. </p>
+    <p style="margin-top: 30px;">High school comes with an increased responsibility of managing assignments, exams and extracurricular activities. With so much going on, it is completely normal to occasionally misplace your belongings. This system was developed to help you recover your lost items efficiently, and securely. </p>
     <br>
     <p>You can browse through the gallery on our Claim page. If you find an item that belongs to you, please fill out the claim form to confirm your ownership. Most items that are reported will be uploaded within three days, so check regularly.</p>
     <br>
-    <p>If you are to come across on item that appears to be lost, please use the form on our Report page to notify us. After a review, we will let you know of what will happen for the collection of the item. Please take note that this system can only run effectively if students and teachers report, or hand in items that have been located within school grounds. </p>
+    <p>If you are to come across on item that appears to be lost, please use the form on our Report page to notify us. After a review, we will let you know of what will happen for the collection of the item. Please take note that this system can only run effectively if students and teachers actively report or hand in items that have been located within school grounds. </p>
     <br>
     <p>Lastly, please use this program with responsibility, as we too will try to help you retreive your lost property as soon as possible.</p>
     <br>
@@ -31,17 +37,25 @@
 
     <div id="explore_links_container">
         <div id="explore_links">
+            <i style='font-size:110px; color: #ed0000e1; margin-top: 40px; margin-bottom: 20px; text-shadow: 5px 5px 2px black' class='fa'>&#xf553;</i>
             <h4>Claim Your Item</h4>
             <a href="{{ url_for('claim') }}">Claim</a>
         </div>
 
         <div id="explore_links">
+            <i style="font-size:110px; color: #ed0000e1; margin-top: 40px; margin-bottom: 20px; text-shadow: 5px 5px 2px black" class="fa">&#xf0f6;</i>
             <h4>Report an Item</h4>
             <a href="{{ url_for('report') }}">Report</a>
         </div>
     </div>
     <br><br><br>
     <p>FIX DESIGN</p>
+
+    <div id="are_you_admin">
+        <h2>Are you Admin?</h2>
+        <p>Then Sign in at the top of the page here: </p>
+        <a href="#">login</a>
+    </div>
 </div>
 
 

@@ -207,12 +207,12 @@ body {
     display: flex;
     width: fit-content;
     /* border: 2px solid black; */
-    padding: 0px 60px;
+    padding: 0px 43px;
     margin-top: 20px;
 }
 
 .fa{
-    margin: 0px 20px;
+    margin: 0px 10px;
 }
 
 #logo_container {
@@ -275,7 +275,7 @@ body {
     text-align: center;
     position: absolute;
     display: none;
-    border: 2px solid black;
+    border: 3px solid #002c1e;
 }
 
 .login_form_container h2 {
@@ -362,7 +362,7 @@ body {
 
 .form_container form {
     background: white;
-    border: 2px black solid;
+    border: 4px solid #ed0000e1;
     display: flex;
     flex-direction: column;
     padding: 2vw 3vw;
@@ -381,21 +381,30 @@ body {
     border: 0;
     margin: 10px 0;
     padding: 10px;
-    border: black 2px solid;
+    border: #002c1e 3px solid;
     border-radius: 2px;
 }
 
 .form_container form button {
     padding: 15px;
-    background: black;
+    background: #002c1e;
     color: white;
-    font-size: 18px;
+    font-size: 23px;
+    font-weight: bold;
     border: 0;
-    border-radius: 30px;
+    border-radius: 40px;
     outline: none;
-    cursor: pointer;
     width: 150px;
     margin: 20px auto 0;
+    border: 3px solid white;
+}
+
+.form_container form button:hover {
+    background: white;
+    border: 3px solid #002c1e;
+    color: #002c1e;
+    transition: all ease 0.6s;
+    cursor: pointer;
 }
 
 /* Index */
@@ -411,7 +420,7 @@ body {
     margin-top: 75px;
     position: relative;
     z-index: -10;
-    border: 4px solid #ed000073;
+    border: 5px solid #ed000073;
 }
 
 
@@ -434,12 +443,12 @@ body {
     margin-top: 100px;
     letter-spacing: 2px;
     line-height: 40px;
+    font-weight: 450;
 }
 
 #index_text h3, #explore_section h3{
     font-size: 40px;
     color: #004831;
-    margin-bottom: 20px;
     text-align: left;
     margin-left: -25px;
 }
@@ -456,26 +465,27 @@ body {
 
 #explore_links_container{
     display: flex;
-    width: 80%;
+    width: 95%;
     margin: 0 auto;
 }
 
 #explore_links{
     display: block;
     width: 50%;
-    height: fit-content;
-    margin: 20px;
-    /* border: 2px solid blue; */
+    height:350px;
+    margin: 40px;
+    border-radius: 35px;
+    border: 3px solid #002c1e;
 }
 
 #explore_links h4{
-    font-size: 35px;
+    font-size: 25px;
     margin-bottom: 40px;
 }
 
 #explore_links a {
-    padding: 20px 80px;
-    font-size: 37.5px;
+    padding: 15px 60px;
+    font-size: 30px;
     color: white;
     background-color: #002c1e;
     border-radius: 50px;
