@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     {% block head %} {% endblock %} 
 </head>
 <body>
@@ -73,14 +74,21 @@
 
     </div>
 
-    <div id="footer">
-                
+    <div id="footer">  
 
-        <div id="logo_container" class="footer_links">
-            <img id="logo" src="{{ url_for('static', filename='images/logo.png') }}" alt="logo">
-            <div id="logo_txt">
-                <h2>Lost</h2>
-                <h2>Property</h2>
+        <div class="footer_links">
+            <div id="logo_container">
+                <img id="logo" src="{{ url_for('static', filename='images/logo.png') }}" alt="logo">
+                <div id="logo_txt">
+                    <h2>Lost</h2>
+                    <h2>Property</h2>
+                </div>
+            </div>
+            <div id="social_media_icons">
+                    <a href="#" class="fa fa-youtube"></a>
+                    <a href="#" class="fa fa-instagram"></a>
+                    <a href="#" class="fa fa-facebook"></a>
+                    <a href="#" class="fa fa-linkedin"></a>
             </div>
         </div>
 
@@ -88,15 +96,10 @@
         <div class="footer_links">
             <ul>
                 <li><h2>My Menu:</h2></li>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#claim">Claim</a></li>
-                <li><a href="#report">Report</a></li>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('claim') }}">Claim</a></li>
+                <li><a href="{{ url_for('report') }}">Report</a></li>
             </ul>
-        </div>
-            
-        <div class="footer_links">
-
-
         </div>
 
         <div class="footer_links">
@@ -105,7 +108,16 @@
                 <li><a href="#start">Westlake Start</a></li>
                 <li><a href="#school_point">School Point</a></li>
                 <li><a href="#website">WBHS Website</a></li>
+            </ul>
 
+        </div>
+            
+        <div class="footer_links">
+            <ul>
+                <li><h2>Contact Us:</h2></li>
+                <li><a target="_blank" href="https://goo.gl/maps/6HacMqGYef5rBSaGA">30 Forrest Hill Road</a></li>
+                <li><a href="tel:+6494108667">+64 9 410 8667</a></li>
+                <li><a>office@westlake.school.nz</a></li>
             </ul>
 
         </div>
