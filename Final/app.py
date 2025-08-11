@@ -119,28 +119,38 @@ def admin():
 #     return render_template('claim.html', items=items)
 
 
-@app.route('/search', methods=['GET', 'POST'])
-def search():
-    item = request.args.get('item', '')
+def items_search(item):
+    """ Have created separate function for search as it will be used by both the 
+    public user and the admin user."""
+    conn = get_db_connection()
     raw_item = item.replace(' ', '').lower()
 
-    conn = get_db_connection()
-
     if raw_item and raw_item != 'search:':
-        # Execute search query first
         sql = 'SELECT * FROM items WHERE item_name LIKE ? COLLATE NOCASE'
         items = conn.execute(sql, (f'%{item}%',)).fetchall()
-
         if not items:
-            # No matches found: flash message and show all items
             flash('No matching items were found')
             items = conn.execute('SELECT * FROM items').fetchall()
     else:
-        # Show all items if no search term or placeholder
         items = conn.execute('SELECT * FROM items').fetchall()
 
     conn.close()
+    return items
+
+
+@app.route('/search', methods=['GET', 'POST'])
+def search_public():
+    item = request.args.get('item', '')
+    items = items_search(item)
     return render_template('claim.html', items=items)
+
+
+@app.route('/admin/search', methods=['GET', 'POST'])
+@login_required
+def search_admin():
+    item = request.args.get('item', '')
+    items = items_search(item)
+    return render_template('admin.html', username=current_user.username, items=items)
 
 
 

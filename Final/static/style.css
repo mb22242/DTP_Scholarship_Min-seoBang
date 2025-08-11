@@ -26,8 +26,8 @@ body {
     background: #002c1e;
     border: solid rgba(255, 255, 255, 0.514) 2px;
     text-align: center;
-    padding: 10px 25px;
-    border-radius: 30px;
+    padding: 10px 30px;
+    border-radius: 25px;
     font-weight: bold;
     font-size: 20px;
     transition: all 0.4s ease;
@@ -36,9 +36,11 @@ body {
 #nav-horizontal_right #login_button:hover, #nav-horizontal_right #logout_button:hover {
     background: white;
     color: #002c1e;
-    border: solid 2px #002c1e;
+    border: solid 2px #ed0000;
     transition: all 0.8s ease;
     cursor: pointer;
+    box-shadow: 4px 4px 1px black;
+    transition: ease 0.6s all;
 }
 
 #nav-horizontal_left {
@@ -511,31 +513,172 @@ body {
 }
 
 /* Admin Gallery */
-
 #admin_page_container {
     display: block;
     width: 100%;
-    border: 2px solid black;
+    /* border: 2px solid black; */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#admin_menu {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    margin: 0 auto;
 }
 
 #admin_gallery_item {
     display: flex;
-    width: 75%;
-    border: 2px solid black;
+    width: 60%;
+    border: 3px solid #002c1e;
     text-align: center;
     margin: 0 auto;
+    margin-top: 30px;
+    border-radius: 15px;
+    padding: 10px;
+    text-align: center;
+}
+
+#admin_gallery_item_info {
+    display: block;
+    /* border: 2px solid black; */
+    width: 100%;
 }
 
 #admin_gallery_image {
-    border: 2px solid #002c1e;
-    border-radius: 15px;
-    width: 400px;
-    height: 300px;
+    border: 3px solid #002c1e;
+    border-radius: 15px 0px 0px 15px;
+    width: 300px;
+    height: 200px;
     object-fit: cover;
 }
 
+#admin_gallery_item .item_button {
+    font-size: 15px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin: 0;
+    color: black;
+    border: 2px solid black;
+}
 
+#item_buttons {
+    display: flex;
+    height: fit-content;
+    width: fit-content;
+    background: black;
+    align-items: center;
+    margin: 0 auto;
+}
 
+#item_buttons button {
+    margin: 0;
+}
+
+#create_new {
+    padding: 8px;
+    font-size: 18px;
+    background:#002c1e;
+    border: 3px solid #002c1e;
+    border-radius: 50px;
+    text-decoration: none;
+    color: white;
+    margin-right: 40px;
+}
+
+#create_new:hover {
+    box-shadow: 3px 3px 1px black;
+    transition: all 0.4s ease;
+    border: 3px solid #ed0000;
+}
+
+/* Admin: Upload Item */
+
+#upload_container{
+    width: 60%;
+    align-items: center;
+    text-align: center;
+    height: fit-content;
+    border: 5px solid #ed0000;
+    border-radius: 30px;
+    margin: 0 auto;
+    margin-top: 50px;
+    padding: 30px 0px;
+}
+
+#upload_container h1 {
+    margin-bottom: 25px;
+    color: #002c1e;
+    font-size: 30px;
+}
+
+#upload_container h2 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#upload_input{
+    width: 33.33%;
+    padding: 10px;
+    height: 15px;
+    border: 2px solid black;
+    border-radius: 8px;
+    font-size: 20px;
+}
+
+#upload_text {
+    width: 33.33%;
+    height: 100px;
+    border-radius: 8px;
+    font-size: 20px;
+}
+
+#upload_category {
+    width: 33.33%;
+    height: 40px;
+    font-size: 15px;
+    text-align: center;
+    font-weight: bold;
+    border: 2px solid black;
+    border-radius: 8px;
+}
+
+#upload_image {
+    /* border: 2px solid black; */
+    margin-left: 50px;
+}
+
+#upload_button {
+    padding: 7.5px 20px;
+    background:#002c1e;
+    color: white;
+    font-size: 19px;
+    border-radius: 40px;
+    border: 3px solid #002c1e;
+    margin-right: 20px;
+}
+
+#upload_button:hover {
+    border: 3px solid #ed0000;
+    transition: ease 0.5s all;
+    color:#002c1e;
+    background: white;
+    cursor: pointer;
+    box-shadow: 3px 3px 1px black;
+}
+
+#cancel_button {
+    color:rgb(193, 33, 33);
+    font-size: 22px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#cancel_button:hover{
+    text-decoration: underline;
+}
 
 /* Claim Page */
 #claim_page_container {
@@ -553,7 +696,7 @@ body {
     padding: 20px 30px;
     width: 400px;
     height: 10px;
-    margin: 25px;
+    margin: 30px 0px;
     border-radius: 10px;
     font-size: 30px;
 }
@@ -569,8 +712,8 @@ body {
 
 .filter-btn {
     border-radius: 25px;
-    padding: 12px;
-    font-size: 18px;
+    padding: 10px;
+    font-size: 15px;
     font-weight: bold;
     margin: 0px 5px;
     background-color: #004831;
@@ -633,21 +776,4 @@ body {
 }
 
 
-/* For ADMIN PAGE but keep for now*/
-#claim_gallery_container .item_button {
-    font-size: 15px;
-    padding: 5px 10px;
-    border-radius: 10px;
-    margin: 0;
-    color: black;
-    border: 2px solid black;
-}
-
-#item_buttons {
-    display: flex;
-    height: 100px;
-    width: fit-content;
-    background: black;
-    align-items: center;
-}
 

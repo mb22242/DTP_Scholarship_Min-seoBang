@@ -8,7 +8,7 @@
 <h2 class="page_header">Claim your Lost Item</h2>
 
 <div class="claim_page_container">
-    <form method="GET" action="{{ url_for('search') }}">
+    <form method="GET" action="{{ url_for('search_public') }}">
         <input id="search_box" type="text" name="item" id="item" value="Search:" onclick="if(this.value=='Search:'){this.value='';}" onblur="if(this.value==''){this.value='Search:';}">
     </form>
 

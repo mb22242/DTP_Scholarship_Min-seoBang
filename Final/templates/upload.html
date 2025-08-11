@@ -7,21 +7,21 @@
 {% block body %}
 
 
-<h1>Upload New Item</h1>
-    <form method="post" enctype="multipart/form-data">
-        <label>Item name:</label><br>
-        <input type="text" name="item_name"><br><br>
+<div id="upload_container">
+    <h1>Upload New Item</h1>
+    <form id="upload_item_form" method="post" enctype="multipart/form-data">
+        <h2>Item name:</h2>
+        <input id="upload_input" type="text" name="item_name"><br><br>
+        <h2>Name:</h2>
+        <input id="upload_input" type="text" name="name"><br><br>
 
-        <label>Name:</label><br>
-        <input type="text" name="name"><br><br>
+        <h2>Description:</h2>
+        <textarea id="upload_text" name="description"></textarea><br><br>
 
-
-        <label>Description:</label><br>
-        <textarea name="description"></textarea><br><br>
-
-        <label>Category:</label><br>
-        <select name="category">
-            <option value="">-- Select Category --</option>
+        <h2>Category:</h2>
+        <br>
+        <select id="upload_category" name="category">
+            <option value="">Select Category</option>
             <option value="Clothing & Accessories">Clothing & Accessories</option>
             <option value="Electronics">Electronics</option>
             <option value="Stationery">Stationery</option>
@@ -31,10 +31,13 @@
             <option value="Miscellaneous">Miscellaneous</option>
         </select>
 
-
-        <label>Image:</label><br>
-        <input type="file" name="image"><br><br>
-
-        <input type="submit" value="Upload">
+        <br><br>
+        <h2>Image:</h2>
+        <br>
+        <input id='upload_image' type="file" name="image"><br><br>
+        <br>
+        <input id="upload_button" type="submit" value="Upload">
+        <a id='cancel_button' href="{{ url_for('admin') }}">Cancel</a>
     </form>
+</div>
 {% endblock %}
