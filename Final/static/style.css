@@ -532,12 +532,11 @@ body {
 #admin_gallery_item {
     display: flex;
     width: 60%;
-    border: 3px solid #002c1e;
+    height: fit-content;
+    border: 2px solid #002c1e;
     text-align: center;
     margin: 0 auto;
     margin-top: 30px;
-    border-radius: 15px;
-    padding: 10px;
     text-align: center;
 }
 
@@ -545,14 +544,25 @@ body {
     display: block;
     /* border: 2px solid black; */
     width: 100%;
+    word-break: break-all;
 }
 
 #admin_gallery_image {
-    border: 3px solid #002c1e;
-    border-radius: 15px 0px 0px 15px;
-    width: 300px;
-    height: 200px;
+    width: 400px;
+    height: 300px;
     object-fit: cover;
+}
+
+#info_text {
+    height: 75%;
+    /* border: 2px solid black; */
+    width: 85%;
+    margin: 0 auto;
+}
+
+#info_text h2 {
+    margin-bottom: 12px;
+    font-size: 30px;
 }
 
 #admin_gallery_item .item_button {
@@ -565,16 +575,23 @@ body {
 }
 
 #item_buttons {
-    display: flex;
-    height: fit-content;
+    height: 50px;
     width: fit-content;
-    background: black;
-    align-items: center;
     margin: 0 auto;
+    border: none;
+    display: flex;
+    align-items: center;
+    
 }
 
-#item_buttons button {
-    margin: 0;
+#item_button {
+    margin: 5px;
+    background: #002c1e;
+    padding: 8px 15px;
+    color: white;
+    font-size: 18px;
+    border: 3px solid #002c1e;
+    border-radius: 40px;
 }
 
 #create_new {
