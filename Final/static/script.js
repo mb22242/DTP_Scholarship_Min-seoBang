@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
     let logout_button = document.getElementById('logout_button');
     let login_form_exit_button = document.getElementById('exit');
 
+
+
     if (menu && sidebar) {
         menu.addEventListener('click', () => {
             sidebar.classList.toggle('active');
