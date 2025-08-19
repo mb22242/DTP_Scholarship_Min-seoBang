@@ -13,21 +13,32 @@
     </form>
 
     <div id="filter_button_container">
-        <button type="button" class="filter-btn" data-category="Clothing and Accessories">Clothing and Accessories</button>
-        <button type="button" class="filter-btn" data-category="Electronics">Electronics</button>
-        <button type="button" class="filter-btn" data-category="Stationery">Stationery</button>
-        <button type="button" class="filter-btn" data-category="Personal Items">Personal Items</button>
-        <button type="button" class="filter-btn" data-category="Jewellery">Jewellery</button>
-        <button type="button" class="filter-btn" data-category="Sports Equipment">Sports Equipment</button>
-        <button type="button" class="filter-btn" data-category="Miscellaneous">Miscellaneous</button>
+        {% set current_category = request.args.get('category', 'All') %}
+        <a class="filter-btn {% if current_category == 'Clothing and Accessories' %}active{% endif %}" href="{{ url_for('claim', category='Clothing and Accessories', item=request.args.get('item','')) }}" >
+            Clothing and Accessories
+        </a>
+        <a class="filter-btn {% if current_category == 'Electronics' %}active{% endif %}" href="{{ url_for('claim', category='Electronics', item=request.args.get('item','')) }}">
+            Electronics
+        </a>
+        <a class="filter-btn {% if current_category == 'Stationery' %}active{% endif %}" href="{{ url_for('claim', category='Stationery', item=request.args.get('item','')) }}">
+            Stationery
+        </a>
+        <a class="filter-btn {% if current_category == 'Personal Items' %}active{% endif %}" href="{{ url_for('claim', category='Personal Items', item=request.args.get('item','')) }}">
+            Personal Items
+        </a>
+        <a class="filter-btn {% if current_category == 'Jewellery' %}active{% endif %}" href="{{ url_for('claim', category='Jewellery', item=request.args.get('item','')) }}">
+            Jewellery
+        </a>
+        <a class="filter-btn {% if current_category == 'Sports Equipment' %}active{% endif %}" href="{{ url_for('claim', category='Sports Equipment', item=request.args.get('item','')) }}">
+            Sports Equipment
+        </a>
+        <a class="filter-btn {% if current_category == 'Miscellaneous' %}active{% endif %}" href="{{ url_for('claim', category='Miscellaneous', item=request.args.get('item','')) }}">
+            Miscellaneous
+        </a>
 
-        <!-- <button id="filter">Clothing and Accessories</button>
-        <button id="filter">Electronics</button>
-        <button id="filter">Stationery</button>
-        <button id="filter">Personal Items</button>
-        <button id="filter">Jewellery</button>
-        <button id="filter">Sports Equipment</button>
-        <button id="filter">Miscellaneous</button> -->
+        <a class="filter-btn" href="{{ url_for('claim', category='All', item=request.args.get('item','')) }}">
+            View All
+        </a>
     </div>
 
     {% for message in get_flashed_messages() %}
@@ -38,12 +49,14 @@
 
     <div id="claim_gallery_container">
         {% for item in items %}
+        <a href="{{ url_for('claim_item', item_id=item['id']) }}">
             <div id="claim_gallery_item">
                 <h2>{{ item['item_name'] }}</h2>
                 <img id='claim_gallery_image' src="{{ url_for('static', filename='uploads/' + item['image_filename']) }}"> 
                 <h3>Description: </h3>
                 <p>{{ item['description'] }}</p>
             </div>
+        </a>
         {% endfor %}
     </div>
 </div>

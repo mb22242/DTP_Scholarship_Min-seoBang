@@ -68,15 +68,28 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/claim', methods = ['GET', 'POST'])
+@app.route("/claim")
 def claim():
-    if request.method == 'POST':
-        return redirect(url_for('index'))
-    
+    item = request.args.get("item", "").replace(" ", "").lower()
+    category = request.args.get("category", "").strip() or None
+    items = items_search(item, category)
+    return render_template("claim.html", items=items)
+
+
+@app.route('/claim_item/<int:item_id>', methods=['GET', 'POST'])
+def claim_item(item_id):
     conn = get_db_connection()
-    items = conn.execute('SELECT id, item_name, name, description, image_filename, category FROM items').fetchall()
+    item = conn.execute('SELECT * FROM items WHERE id = ?', (item_id,)).fetchone()
     conn.close()
-    return render_template('claim.html', items=items)
+
+    if not item:
+        flash("Item not found.")
+        return redirect(url_for('claim'))
+
+    if request.method == 'POST':
+        pass
+
+    return render_template('claim_form.html', item=item)
 
 
 @app.route('/report', methods = ['GET', 'POST'])
@@ -84,6 +97,38 @@ def report():
     if request.method == 'POST':
         return redirect(url_for('index'))
     return render_template('report.html')
+
+
+@app.route('/search', methods=['GET', 'POST'])
+def search_public():
+    item = request.args.get('item', '')
+    items = items_search(item)
+    return render_template('claim.html', items=items)
+
+
+def items_search(item="", category=None):
+    conn = get_db_connection()
+    raw_item = item.replace(' ', '').lower()
+
+    sql = "SELECT * FROM items WHERE 1=1"
+    params = []
+
+    # Filter by item name (search)
+    if raw_item and raw_item.lower() != "search:":
+        sql += " AND REPLACE(LOWER(item_name), ' ', '') LIKE ?"
+        params.append(f"%{raw_item}%")
+
+    # Filter by category
+    if category:
+        sql += " AND category = ? COLLATE NOCASE"
+        params.append(category)
+
+    items = conn.execute(sql, params).fetchall()
+    conn.close()
+
+    if not items:
+        flash("No matching items found.")
+    return items
 
 
 @app.route('/admin', methods=('GET','POST'))
@@ -95,56 +140,6 @@ def admin():
     return render_template('admin.html', username=current_user.username, items=items)
 
 
-# @app.route('/search')
-# def search():
-#     item = request.args.get('item')
-#     raw_item = item.replace(' ', '').lower()
-#     # print(raw_item)
-
-#     conn = get_db_connection()
-    
-#     if raw_item != 'search:':
-#         sql = 'SELECT * FROM items WHERE item_name = ?'
-#         items = conn.execute(sql, (item,)).fetchall()
-
-#     else:
-#         #If nothing was searched for, then print out everything. 
-#         sql = 'SELECT * FROM items'
-#         items = conn.execute(sql).fetchall()
-        
-#     # items = conn.execute('SELECT id, item_name, name, description, image_filename, category FROM items').fetchall()
-    
-#     conn.close()
-    
-#     return render_template('claim.html', items=items)
-
-
-def items_search(item):
-    """ Have created separate function for search as it will be used by both the 
-    public user and the admin user."""
-    conn = get_db_connection()
-    raw_item = item.replace(' ', '').lower()
-
-    if raw_item and raw_item != 'search:':
-        sql = 'SELECT * FROM items WHERE item_name LIKE ? COLLATE NOCASE'
-        items = conn.execute(sql, (f'%{item}%',)).fetchall()
-        if not items:
-            flash('No matching items were found')
-            items = conn.execute('SELECT * FROM items').fetchall()
-    else:
-        items = conn.execute('SELECT * FROM items').fetchall()
-
-    conn.close()
-    return items
-
-
-@app.route('/search', methods=['GET', 'POST'])
-def search_public():
-    item = request.args.get('item', '')
-    items = items_search(item)
-    return render_template('claim.html', items=items)
-
-
 @app.route('/admin/search', methods=['GET', 'POST'])
 @login_required
 def search_admin():
@@ -152,6 +147,13 @@ def search_admin():
     items = items_search(item)
     return render_template('admin.html', username=current_user.username, items=items)
 
+
+@app.route('/admin/filter/<category>')
+@login_required
+def admin_filter(category):
+    item = request.args.get("item", "")
+    items = items_search(item, category)
+    return render_template('admin.html', items=items, username=current_user.username)
 
 
 @app.route('/admin/upload', methods=['GET', 'POST'])
@@ -201,15 +203,6 @@ def update_item(id):
 
     conn.close()
     return render_template('update.html', item=item)
-
-
-# @app.route('/admin/delete/<int:id>', methods=['POST', 'GET'])
-# def delete_item(id):
-#     conn = get_db_connection()
-#     conn.execute('DELETE FROM items WHERE id = ?', (id,))
-#     conn.commit()
-#     conn.close()
-#     return redirect(url_for('admin'))
 
 
 @app.route('/admin/delete/<int:id>', methods=['POST', 'GET'])

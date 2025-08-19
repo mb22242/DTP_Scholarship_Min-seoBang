@@ -209,12 +209,12 @@ body {
     display: flex;
     width: fit-content;
     /* border: 2px solid black; */
-    padding: 0px 43px;
+    padding: 0px 25px;
     margin-top: 20px;
 }
 
 .fa{
-    margin: 0px 10px;
+    margin: 0px 5px;
 }
 
 #logo_container {
@@ -508,6 +508,21 @@ body {
     margin: 0 auto;
 }
 
+#are_you_admin h2 {
+    font-size: 37px;
+    color: #002c1e;
+}
+
+#are_you_admin #login_link {
+    padding: 10px 20px;
+    border: 2px solid black;
+    background:#002c1e;
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+    border-radius: 40px;
+}
+
 /* ADMIN */
 /* Admin Navigation  */
 #admin_nav {
@@ -734,13 +749,19 @@ body {
 
 .filter-btn {
     border-radius: 25px;
-    padding: 10px;
+    padding: 12px;
     font-size: 15px;
     font-weight: bold;
     margin: 0px 5px;
     background-color: #004831;
     color: white;
+    text-decoration: none;
+}
 
+.filter-btn.active {
+    background-color: #ed0000;
+    border: 2px solid rgb(126, 0, 0);
+    color: #ffffff;
 }
 
 /* Flash */
@@ -764,6 +785,7 @@ body {
     margin: 0 auto;
     margin-top: 40px;
     margin-bottom: 200px;
+    align-items: center;
     /* border: 2px solid black; */
 }
 
@@ -773,14 +795,21 @@ body {
     background-color: #ffffff;
     border: 1px solid #c1c0c0;
     border-radius: 12px;
-    width: 420px;
+    width: 400px;
     overflow-wrap: break-word;
     margin: 16px;
     border: 3px solid #004831;
+    padding: 10px;
+    color: black;
+}
+
+#claim_gallery_container a {
+    text-decoration: none;
 }
 
 #claim_gallery_item:hover{
-    box-shadow: 2px 2px 2px #ed0000;
+    border: 3px solid red;
+    box-shadow: 4px 4px 3px black;
     transition-duration: 0.4s;
     cursor: pointer;
 }

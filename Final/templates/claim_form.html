@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<h2 class="page_header">Claim Item: {{ item['item_name'] }}</h2>
+
+<img src="{{ url_for('static', filename='uploads/' + item['image_filename']) }}" style="max-width:300px;">
+<p>{{ item['description'] }}</p>
+
+<form method="POST">
+    <label for="claimant_name">Your Name:</label>
+    <input type="text" name="claimant_name" required>
+
+    <label for="claimant_email">Your Email:</label>
+    <input type="email" name="claimant_email" required>
+
+    <label for="additional_info">Additional Information:</label>
+    <textarea name="additional_info"></textarea>
+
+    <button type="submit">Submit Claim</button>
+</form>
+
+{% endblock %}
