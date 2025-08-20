@@ -7,20 +7,46 @@
 {% block body %}
 <h2 class="page_header">Claim Item: {{ item['item_name'] }}</h2>
 
-<img src="{{ url_for('static', filename='uploads/' + item['image_filename']) }}" style="max-width:300px;">
-<p>{{ item['description'] }}</p>
+<div class="claim_form_container">
+    <form onsubmit="sendEmail(); reset(); return false">
+        <!-- <label for="claimant_name">Your Name:</label>
+        <input type="text" name="claimant_name" required>
 
-<form method="POST">
-    <label for="claimant_name">Your Name:</label>
-    <input type="text" name="claimant_name" required>
+        <label for="claimant_email">Your Email:</label>
+        <input type="email" name="claimant_email" required>
 
-    <label for="claimant_email">Your Email:</label>
-    <input type="email" name="claimant_email" required>
+        <label for="additional_info">Special Description:</label>
+        <textarea name="additional_info"></textarea>
 
-    <label for="additional_info">Additional Information:</label>
-    <textarea name="additional_info"></textarea>
+        <button type="submit">Submit Claim</button> -->
+        <div class="item_preview">
+            <img src="{{ url_for('static', filename='uploads/' + item['image_filename']) }}" style="max-width:300px;">
+            <p>{{ item['description'] }}</p>
+        </div>
+        <div class="claim_form">
+            <h3>Please enter your Name, your Email and a Special Description of the item that you claim to be yours:</h3>
+            <input type="text" id="name" placeholder="Name:" required>
+            <br>
+            <input type="email" id="email" placeholder="Email:" required>
+            <br>
+            <textarea id="message" rows="4" placeholder="Special Description of item:"></textarea>
+            <br>
+            <h3>Our team will reach back to you as soon as possible.</h3>
+            <button type="submit">Send</button>
+        </div>
+    </form>
+</div>
 
-    <button type="submit">Submit Claim</button>
-</form>
+<script>
+    function sendEmail(){
+        let parms = {
+            name : document.getElementById("name").value,
+            email : document.getElementById("email").value,
+            message : document.getElementById("message").value,
+        }
+        
+        emailjs.send("service_lirsgks","template_kxb4e5d",parms).then(alert('Email has been sent'))
+    }
+</script>
 
 {% endblock %}

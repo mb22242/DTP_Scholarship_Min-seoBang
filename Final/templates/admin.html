@@ -20,29 +20,29 @@
 
     <div id="filter_button_container">
         {% set current_category = request.args.get('category', 'All') %}
-        <a class="filter-btn {% if current_category == 'Clothing and Accessories' %}active{% endif %}" href="{{ url_for('admin_filter', category='Clothing and Accessories', item=request.args.get('item','')) }}" >
+        <a class="filter-btn {% if current_category == 'Clothing and Accessories' %}active{% endif %}" href="{{ url_for('admin', category='Clothing and Accessories', item=request.args.get('item','')) }}" >
             Clothing and Accessories
         </a>
-        <a class="filter-btn {% if current_category == 'Electronics' %}active{% endif %}" href="{{ url_for('admin_filter', category='Electronics', item=request.args.get('item','')) }}">
+        <a class="filter-btn {% if current_category == 'Electronics' %}active{% endif %}" href="{{ url_for('admin', category='Electronics', item=request.args.get('item','')) }}">
             Electronics
         </a>
-        <a class="filter-btn {% if current_category == 'Stationery' %}active{% endif %}" href="{{ url_for('admin_filter', category='Stationery', item=request.args.get('item','')) }}">
+        <a class="filter-btn {% if current_category == 'Stationery' %}active{% endif %}" href="{{ url_for('admin', category='Stationery', item=request.args.get('item','')) }}">
             Stationery
         </a>
-        <a class="filter-btn {% if current_category == 'Personal Items' %}active{% endif %}" href="{{ url_for('admin_filter', category='Personal Items', item=request.args.get('item','')) }}">
+        <a class="filter-btn {% if current_category == 'Personal Items' %}active{% endif %}" href="{{ url_for('admin', category='Personal Items', item=request.args.get('item','')) }}">
             Personal Items
         </a>
-        <a class="filter-btn {% if current_category == 'Jewellery' %}active{% endif %}" href="{{ url_for('admin_filter', category='Jewellery', item=request.args.get('item','')) }}">
+        <a class="filter-btn {% if current_category == 'Jewellery' %}active{% endif %}" href="{{ url_for('admin', category='Jewellery', item=request.args.get('item','')) }}">
             Jewellery
         </a>
-        <a class="filter-btn {% if current_category == 'Sports Equipment' %}active{% endif %}" href="{{ url_for('admin_filter', category='Sports Equipment', item=request.args.get('item','')) }}">
+        <a class="filter-btn {% if current_category == 'Sports Equipment' %}active{% endif %}" href="{{ url_for('admin', category='Sports Equipment', item=request.args.get('item','')) }}">
             Sports Equipment
         </a>
-        <a class="filter-btn {% if current_category == 'Miscellaneous' %}active{% endif %}" href="{{ url_for('admin_filter', category='Miscellaneous', item=request.args.get('item','')) }}">
+        <a class="filter-btn {% if current_category == 'Miscellaneous' %}active{% endif %}" href="{{ url_for('admin', category='Miscellaneous', item=request.args.get('item','')) }}">
             Miscellaneous
         </a>
 
-        <a class="filter-btn" href="{{ url_for('admin_filter', category='', item=request.args.get('item','')) }}">
+        <a class="filter-btn" href="{{ url_for('admin', category='All', item=request.args.get('item','')) }}">
             View All
         </a>
     </div>

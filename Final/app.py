@@ -71,9 +71,15 @@ def index():
 @app.route("/claim")
 def claim():
     item = request.args.get("item", "").replace(" ", "").lower()
-    category = request.args.get("category", "").strip() or None
-    items = items_search(item, category)
+    category = request.args.get("category", "")
+
+    if category:  
+        items = items_search(category=category)
+    else:        
+        items = items_search(item=item)
+
     return render_template("claim.html", items=items)
+
 
 
 @app.route('/claim_item/<int:item_id>', methods=['GET', 'POST'])
@@ -110,18 +116,21 @@ def items_search(item="", category=None):
     conn = get_db_connection()
     raw_item = item.replace(' ', '').lower()
 
-    sql = "SELECT * FROM items WHERE 1=1"
+    sql = ""
     params = []
 
     # Filter by item name (search)
     if raw_item and raw_item.lower() != "search:":
-        sql += " AND REPLACE(LOWER(item_name), ' ', '') LIKE ?"
-        params.append(f"%{raw_item}%")
+        sql = "SELECT * FROM items WHERE REPLACE(LOWER(item_name), ' ', '') LIKE ?"
+        params = [f"%{raw_item}%"]
 
     # Filter by category
-    if category:
-        sql += " AND category = ? COLLATE NOCASE"
-        params.append(category)
+    elif category and category != 'All':
+        sql = "SELECT * FROM items WHERE category = ? COLLATE NOCASE"
+        params = [category]
+    
+    else:
+        sql = "SELECT * FROM items"
 
     items = conn.execute(sql, params).fetchall()
     conn.close()
@@ -134,26 +143,23 @@ def items_search(item="", category=None):
 @app.route('/admin', methods=('GET','POST'))
 @login_required
 def admin():
-    conn = get_db_connection()
-    items = conn.execute('SELECT id, item_name, name, description, image_filename, category FROM items').fetchall()
-    conn.close()
-    return render_template('admin.html', username=current_user.username, items=items)
+    item = request.args.get("item", "").replace(" ", "").lower()
+    category = request.args.get("category", "")
 
+    if category:
+        items = items_search(category=category)
+    else:
+        items = items_search(item=item)
 
+    return render_template("admin.html", username=current_user.username, items=items)
+   
+   
 @app.route('/admin/search', methods=['GET', 'POST'])
 @login_required
 def search_admin():
     item = request.args.get('item', '')
     items = items_search(item)
     return render_template('admin.html', username=current_user.username, items=items)
-
-
-@app.route('/admin/filter/<category>')
-@login_required
-def admin_filter(category):
-    item = request.args.get("item", "")
-    items = items_search(item, category)
-    return render_template('admin.html', items=items, username=current_user.username)
 
 
 @app.route('/admin/upload', methods=['GET', 'POST'])

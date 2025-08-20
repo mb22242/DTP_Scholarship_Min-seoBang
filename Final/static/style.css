@@ -39,7 +39,7 @@ body {
     border: solid 2px #ed0000;
     transition: all 0.8s ease;
     cursor: pointer;
-    box-shadow: 4px 4px 1px black;
+    box-shadow: 2px 2px 1px black;
     transition: ease 0.6s all;
 }
 
@@ -351,15 +351,21 @@ body {
     margin-bottom: -200px;
 }
 
-.form_container {
+.form_container, .claim_form_container {
     width: 100%;
     height: 100vh;
     /* background: black; */
     margin-top: 50px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
+}
+
+.claim_form_container {
+    margin-top: -110px;
+    margin-bottom: -100px;
 }
 
 .form_container form {
@@ -370,24 +376,45 @@ body {
     padding: 2vw 3vw;
     width: 90%;
     max-width: 600px;
-    border-radius: 10px;
+    border-radius: 15px;
 }
 
-.form_container form h3 {
+.claim_form_container form {
+    border: 4px solid #ed0000e1;
+    display: flex;
+    align-items: center;
+    border-radius: 15px;
+}
+
+.claim_form_container .claim_form {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    width: 58%;
+    margin: 0 auto;
+}
+
+.claim_form_container .item_preview {
+    margin: 0 auto;
+    border: 2px solid black;
+}
+
+.form_container form h3, .claim_form_container form h3 {
     color: black;
     font-weight: 800;
     margin-bottom: 20px;
 }
 
-.form_container form input, form textarea {
+.form_container form input, form textarea , .claim_form_container form input, form textarea {
     border: 0;
-    margin: 10px 0;
     padding: 10px;
     border: #002c1e 3px solid;
     border-radius: 2px;
+    width: 90%;
+    margin: 0 auto;
 }
 
-.form_container form button {
+.form_container form button, .claim_form_container form button {
     padding: 15px;
     background: #002c1e;
     color: white;
@@ -401,7 +428,7 @@ body {
     border: 3px solid white;
 }
 
-.form_container form button:hover {
+.form_container form button:hover, .claim_form_container form button:hover {
     background: white;
     border: 3px solid #002c1e;
     color: #002c1e;
@@ -503,8 +530,11 @@ body {
 }
 
 #are_you_admin {
-    width: 75%;
-    border: 2px solid black;
+    width: 43%;
+    height: fit-content;
+    padding: 30px;
+    border-radius: 20px;
+    border: 3px solid #ed0000;
     margin: 0 auto;
 }
 
@@ -513,13 +543,18 @@ body {
     color: #002c1e;
 }
 
+#are_you_admin p {
+    font-size: 25px;
+}
+
 #are_you_admin #login_link {
-    padding: 10px 20px;
+    padding: 7px 23px;
     border: 2px solid black;
     background:#002c1e;
     color: white;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 22px;
+    font-weight: 600;
     border-radius: 40px;
 }
 
@@ -626,7 +661,7 @@ body {
 }
 
 #create_new:hover {
-    box-shadow: 3px 3px 1px black;
+    box-shadow: 1px 1px 1px black;
     transition: all 0.4s ease;
     border: 3px solid #ed0000;
 }
