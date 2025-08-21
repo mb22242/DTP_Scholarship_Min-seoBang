@@ -599,6 +599,7 @@ body {
     display: block;
     /* border: 2px solid black; */
     width: 100%;
+    padding: 20px;
     word-break: break-all;
 }
 
