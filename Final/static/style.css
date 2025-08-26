@@ -397,6 +397,15 @@ body {
 .claim_form_container .item_preview {
     margin: 0 auto;
     border: 2px solid black;
+    padding: 0;
+}
+
+
+
+.claim_form_container .item_preview p {
+    width: 40%;
+    height: fit-content;
+    margin: 0 auto;
 }
 
 .form_container form h3, .claim_form_container form h3 {
