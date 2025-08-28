@@ -10,6 +10,7 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    background: rgb(250, 245, 239);
 }
 
 #nav-horizontal {
@@ -461,7 +462,6 @@ body {
     border: 5px solid #ed000073;
 }
 
-
 #hero_txt {
     text-align: left;
     left: 12.5%;
@@ -474,7 +474,7 @@ body {
 }
 
 #index_text {
-    width: 75%;
+    width: 70%;
     text-align: left;
     margin: 0 auto;
     font-size: 25px;
@@ -485,10 +485,14 @@ body {
 }
 
 #index_text h3, #explore_section h3{
-    font-size: 40px;
+    font-size: 30px;
     color: #004831;
     text-align: left;
     margin-left: -25px;
+}
+
+#index_text p {
+    font-size: 20px;
 }
 
 #explore_section{
@@ -503,14 +507,18 @@ body {
 
 #explore_links_container{
     display: flex;
-    width: 95%;
+    width: 80%;
     margin: 0 auto;
+    background: rgb(255, 255, 255);
+    border-radius: 20px;
+    border: 1px solid black;
+
 }
 
 #explore_links{
     display: block;
     width: 50%;
-    height:350px;
+    height:300px;
     margin: 40px;
     border-radius: 35px;
     border: 3px solid #002c1e;
@@ -522,8 +530,8 @@ body {
 }
 
 #explore_links a {
-    padding: 15px 60px;
-    font-size: 30px;
+    padding: 10px 40px;
+    font-size: 20px;
     color: white;
     background-color: #002c1e;
     border-radius: 50px;
