@@ -561,19 +561,6 @@ body {
     margin-bottom: 22px;
 }
 
-#admin_login_link {
-    display: flex;
-    align-items: center;
-    width: fit-content;
-    margin: 0 auto;
-    text-align: center;
-}
-
-#admin_login_link h2{
-    font-size: 26px;
-    margin-left: 10px;
-}
-
 /* ADMIN */
 /* Admin Navigation  */
 #admin_nav {
@@ -782,12 +769,12 @@ body {
 #search_box {
     background: white;
     border: 2px black solid;
-    padding: 20px 30px;
+    padding: 15px 20px;
     width: 400px;
     height: 10px;
     margin: 30px 0px;
     border-radius: 10px;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 /* Filter Buttons */
@@ -801,8 +788,8 @@ body {
 
 .filter-btn {
     border-radius: 25px;
-    padding: 12px;
-    font-size: 15px;
+    padding: 10px;
+    font-size: 16px;
     font-weight: bold;
     margin: 0px 5px;
     background-color: #004831;
@@ -821,7 +808,7 @@ body {
     padding: 20px;
     font-size: 20px;
     font-weight: bold;
-    width: 89.5%;
+    width: 70%;
     margin: 0 auto;
     margin-top: 40px;
     border-radius: 15px;
@@ -833,7 +820,9 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    width: 1375px;
+    width: 1385px;
+    /* 1385px for 4 */
+    /* 1040px for 3 */
     margin: 0 auto;
     margin-top: 40px;
     margin-bottom: 200px;
@@ -847,10 +836,10 @@ body {
     background-color: #ffffff;
     border: 1px solid #c1c0c0;
     border-radius: 12px;
-    width: 400px;
+    width: 290px;
     overflow-wrap: break-word;
     margin: 16px;
-    border: 3px solid #004831;
+    border: 2px solid #004831;
     padding: 10px;
     color: black;
 }
@@ -860,22 +849,23 @@ body {
 }
 
 #claim_gallery_item:hover{
-    border: 3px solid red;
-    box-shadow: 4px 4px 3px black;
+    border: 2px solid red;
+    box-shadow: 2px 2px 3px black;
     transition-duration: 0.4s;
     cursor: pointer;
 }
 
 #claim_gallery_item h2 {
-    font-size: 30px;
+    font-size: 21px;
+    margin-bottom: 10px;
 }
 
 #claim_gallery_image {
     border-radius: 10px;
     border: 2px solid #004d3c;
     object-fit: cover;
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
 }
 
 
