@@ -401,8 +401,6 @@ body {
     padding: 0;
 }
 
-
-
 .claim_form_container .item_preview p {
     width: 40%;
     height: fit-content;
@@ -450,13 +448,13 @@ body {
 
 #home_page_hero {
     background-image: url("../static/images/hero.jpg");
-    height: 60vh;
-    width: 90%;
+    height: 55vh;
+    width: 88%;
     border-radius: 20px;
     background-position: center;
     background-repeat: no-repeat;
     margin: 0 auto;
-    margin-top: 75px;
+    margin-top: 100px;
     position: relative;
     z-index: -10;
     border: 5px solid #ed000073;
@@ -468,70 +466,79 @@ body {
     top: 50%;
     position: absolute;
     color: white;
-    font-size: 60px;
+    font-size: 50px;
     transform: translate(-10%, -50%);
     text-shadow: 15px 15px 7px #111111;
 }
 
 #index_text {
-    width: 70%;
+    width: 90%;
     text-align: left;
     margin: 0 auto;
     font-size: 25px;
-    margin-top: 100px;
     letter-spacing: 2px;
-    line-height: 40px;
-    font-weight: 450;
+    line-height: 35px;
+    font-weight: 525;
 }
 
 #index_text h3, #explore_section h3{
     font-size: 30px;
     color: #004831;
-    text-align: left;
-    margin-left: -25px;
 }
 
 #index_text p {
     font-size: 20px;
 }
 
-#explore_section{
+#explore_section {
     display: block;
-    width: 75%;
     height: fit-content;
     /* border: 2px solid black; */
-    margin: 0 auto;
     margin-top: 75px;
     margin-bottom: 100px;
 }
 
-#explore_links_container{
-    display: flex;
-    width: 80%;
-    margin: 0 auto;
+#quick_links {
     background: rgb(255, 255, 255);
     border-radius: 20px;
-    border: 1px solid black;
-
-}
-
-#explore_links{
-    display: block;
-    width: 50%;
-    height:300px;
-    margin: 40px;
-    border-radius: 35px;
-    border: 3px solid #002c1e;
-}
-
-#explore_links h4{
-    font-size: 25px;
+    border: 1px solid rgba(255, 0, 0, 0.219);
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 40px;
     margin-bottom: 40px;
 }
 
-#explore_links a {
-    padding: 10px 40px;
-    font-size: 20px;
+#quick_links h3 {
+    text-align: left;
+    margin-left: 40px;
+    margin-top: 20px;
+    font-size: 28px;
+}
+
+#explore_links_container{
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.explore_links{
+    display: block;
+    width: 100%;
+    height: 220px;
+    margin: 20px;
+    margin-bottom: 40px;
+    border-radius: 35px;
+    border: 1px solid #002c1e;
+}
+
+.explore_links h4{
+    font-size: 22px;
+    margin-bottom: 40px;
+}
+
+.explore_links a {
+    padding: 10px 30px;
+    font-size: 18px;
     color: white;
     background-color: #002c1e;
     border-radius: 50px;
@@ -539,40 +546,32 @@ body {
     font-weight: bold;
 } 
 
-#explore_links a:hover {
+.explore_links a:hover {
     color: #002c1e;
     background: white;
     border: 4px solid #002c1e;
     transition: all 0.4s ease;
 }
 
-#are_you_admin {
-    width: 43%;
-    height: fit-content;
-    padding: 30px;
-    border-radius: 20px;
-    border: 3px solid #ed0000;
-    margin: 0 auto;
-}
-
-#are_you_admin h2 {
-    font-size: 37px;
-    color: #002c1e;
-}
-
-#are_you_admin p {
-    font-size: 25px;
-}
-
-#are_you_admin #login_link {
-    padding: 7px 23px;
-    border: 2px solid black;
-    background:#002c1e;
-    color: white;
-    text-decoration: none;
+.explore_links p {
     font-size: 22px;
-    font-weight: 600;
-    border-radius: 40px;
+    margin: 10px 0px;
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 22px;
+}
+
+#admin_login_link {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#admin_login_link h2{
+    font-size: 26px;
+    margin-left: 10px;
 }
 
 /* ADMIN */
