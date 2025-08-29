@@ -10,7 +10,7 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    background: rgb(250, 249, 239);
+    background: rgba(252, 252, 240, 0.783);
 }
 
 #nav-horizontal {
@@ -209,7 +209,7 @@ body {
 }
 
 .footer_content {
-    width: 70%;
+    width: 80%;
     display: flex;
 }
 
@@ -479,7 +479,7 @@ body {
 }
 
 #index_text {
-    width: 90%;
+    width: 85%;
     text-align: left;
     margin: 0 auto;
     font-size: 25px;
@@ -491,6 +491,9 @@ body {
 #index_text h3, #explore_section h3{
     font-size: 30px;
     color: #004831;
+    text-align: left;
+    margin-left: 40px;
+    font-size: 28px;
 }
 
 #index_text p {
@@ -513,13 +516,7 @@ body {
     margin: 0 auto;
     margin-top: 20px;
     margin-bottom: 40px;
-}
-
-#quick_links h3 {
-    text-align: left;
-    margin-left: 40px;
-    margin-top: 20px;
-    font-size: 28px;
+    padding: 25px 0px;
 }
 
 #explore_links_container{
@@ -533,7 +530,6 @@ body {
     width: 100%;
     height: 220px;
     margin: 20px;
-    margin-bottom: 40px;
     border-radius: 35px;
     border: 1px solid #002c1e;
 }
@@ -596,9 +592,10 @@ body {
 
 #admin_gallery_item {
     display: flex;
-    width: 60%;
+    width: 50%;
     height: fit-content;
     border: 2px solid #002c1e;
+    border-radius: 15px;
     text-align: center;
     margin: 0 auto;
     margin-top: 30px;
@@ -614,9 +611,10 @@ body {
 }
 
 #admin_gallery_image {
-    width: 400px;
-    height: 300px;
+    width: 300px;
+    height: 200px;
     object-fit: cover;
+    border-radius: 15px 0px 0px 15px;
 }
 
 #info_text {
@@ -628,7 +626,7 @@ body {
 
 #info_text h2 {
     margin-bottom: 12px;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 #admin_gallery_item .item_button {
