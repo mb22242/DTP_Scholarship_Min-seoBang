@@ -489,10 +489,9 @@ body {
 }
 
 #index_text h3, #explore_section h3{
-    font-size: 30px;
     color: #004831;
     text-align: left;
-    margin-left: 40px;
+    margin-left: 60px;
     font-size: 28px;
 }
 
@@ -511,11 +510,11 @@ body {
 #quick_links {
     background: rgb(255, 255, 255);
     border-radius: 20px;
-    border: 1px solid rgba(255, 0, 0, 0.219);
+    border: 2px solid rgba(0, 0, 0, 0.219);
     width: 86%;
     margin: 0 auto;
     margin-top: 20px;
-    margin-bottom: 40px;
+    margin-bottom: 70px;
     padding: 25px 0px;
 }
 
@@ -531,7 +530,7 @@ body {
     height: 220px;
     margin: 20px;
     border-radius: 35px;
-    border: 1px solid #002c1e;
+    border: 2px solid rgba(0, 0, 0, 0.219);
 }
 
 .explore_links h4{
@@ -592,26 +591,6 @@ body {
     margin-top: 30px;
 }
 
-#admin_gallery_item {
-    display: flex;
-    width: 600px;
-    height: fit-content;
-    border: 2px solid #002c1e;
-    border-radius: 15px;
-    text-align: center;
-    margin: 15px;
-    text-align: center;
-    background-color: white;
-}
-
-#admin_gallery_item_info {
-    display: block;
-    /* border: 2px solid black; */
-    width: 100%;
-    padding: 20px;
-    word-break: break-all;
-}
-
 #admin_gallery_image {
     width: 200px;
     height: 200px;
@@ -625,6 +604,7 @@ body {
     /* border: 2px solid black; */
     width: 85%;
     margin: 0 auto;
+    text-align: left;
 }
 
 #info_text h2 {
@@ -632,41 +612,57 @@ body {
     font-size: 25px;
 }
 
-#admin_gallery_item .item_button {
-    font-size: 15px;
-    padding: 5px 10px;
-    border-radius: 10px;
-    margin: 0;
-    color: black;
-    border: 2px solid black;
-}
-
-#item_buttons {
-    height: 50px;
-    width: fit-content;
-    margin: 0 auto;
-    border: none;
+#admin_gallery_item {
     display: flex;
-    align-items: center;
-    
+    width: 600px;
+    position: relative; 
+    border: 2px solid #002c1e;
+    border-radius: 15px;
+    text-align: center;
+    margin: 15px;
+    background-color: white;
+    overflow: hidden;   
 }
 
-#item_button {
-    margin: 5px;
+#admin_gallery_item_info {
+    display: block;
+    width: 100%;
+    padding: 20px;
+    word-break: break-all;
+    position: relative; 
+}
+
+/* Positioning for buttons */
+#delete {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #c20707;
+}
+
+#edit {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #002c1e;
+}
+
+.item_button {
     background: #002c1e;
     padding: 8px 15px;
     color: white;
     font-size: 18px;
     border: 2px solid #002c1e;
-    border-radius: 40px;
-}
-
-#item_button:hover {
-    background-color: white;
+    border-radius: 50px;
     cursor: pointer;
-    color: #002c1e;
     transition: 0.4s ease;
 }
+
+.item_button:hover {
+    background-color: white;
+    color: #002c1e;
+}
+
 
 #create_new {
     padding: 8px;
@@ -686,6 +682,7 @@ body {
     background: white;
     color: black;
 }
+
 
 /* Admin: Upload Item */
 
@@ -829,8 +826,9 @@ body {
     width: 80%;
     margin: 0 auto;
     margin-top: 15px;
-    border-radius: 15px;
-    background-color: #ff0a0ab5;
+    border-radius: 10px;
+    background-color: #fe525289;
+    border: 2px solid red;
     text-align: center;
 }
 

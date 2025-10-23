@@ -63,8 +63,6 @@ def index():
         if username == ADMIN_USERNAME and check_password_hash(ADMIN_PASSWORD_HASH, password):
             login_user(AdminUser())
             return redirect(url_for('admin'))
-        flash('Invalid credentials', 'error') 
-        # add flash messages!
     return render_template('index.html')
 
 
@@ -112,46 +110,85 @@ def search_public():
     return render_template('claim.html', items=items)
 
 
+# def items_search(item="", category=None):
+#     conn = get_db_connection()
+#     raw_item = item.replace(' ', '').lower()
+
+#     sql = ""
+#     params = []
+
+#     # Filter by item name (search)
+#     if raw_item and raw_item.lower() != "search:":
+#         sql = "SELECT * FROM items WHERE REPLACE(LOWER(item_name), ' ', '') LIKE ?"
+#         params = [f"%{raw_item}%"]
+
+#     # Filter by category
+#     elif category and category != 'All':
+#         sql = "SELECT * FROM items WHERE category = ? COLLATE NOCASE"
+#         params = [category]
+    
+#     else:
+#         sql = "SELECT * FROM items"
+
+#     items = conn.execute(sql, params).fetchall()
+#     conn.close()
+
+#     if not items:
+#         flash("No matching items found.")
+#     return items
+
 def items_search(item="", category=None):
     conn = get_db_connection()
-    raw_item = item.replace(' ', '').lower()
+    raw_item = item.strip().lower() if item else ""
+    raw_category = category.strip().lower() if category else ""
 
-    sql = ""
+    sql = "SELECT * FROM items WHERE 1=1"
     params = []
 
-    # Filter by item name (search)
-    if raw_item and raw_item.lower() != "search:":
-        sql = "SELECT * FROM items WHERE REPLACE(LOWER(item_name), ' ', '') LIKE ?"
-        params = [f"%{raw_item}%"]
+    # Search by item name
+    if raw_item and raw_item != "search:":
+        sql += " AND REPLACE(LOWER(item_name), ' ', '') LIKE ?"
+        params.append(f"%{raw_item}%")
 
     # Filter by category
-    elif category and category != 'All':
-        sql = "SELECT * FROM items WHERE category = ? COLLATE NOCASE"
-        params = [category]
-    
-    else:
-        sql = "SELECT * FROM items"
+    if raw_category and raw_category != "all":
+        sql += " AND TRIM(LOWER(category)) = ?"
+        params.append(raw_category)
 
     items = conn.execute(sql, params).fetchall()
     conn.close()
 
     if not items:
-        flash("No matching items found.")
+        flash(f"No items were found for '{category}'." if category else "No items found.")
     return items
 
 
-@app.route('/admin', methods=('GET','POST'))
+
+
+# @app.route('/admin', methods=('GET','POST'))
+# @login_required
+# def admin():
+#     item = request.args.get("item", "").replace(" ", "").lower()
+#     category = request.args.get("category", "All")
+
+#     if category:
+#         items = items_search(category=category)
+#     else:
+#         items = items_search(item=item)
+
+#     return render_template("admin.html", username=current_user.username, items=items)
+
+@app.route('/admin', methods=['GET', 'POST'])
 @login_required
 def admin():
     item = request.args.get("item", "").replace(" ", "").lower()
-    category = request.args.get("category", "")
+    category = request.args.get("category", "All")
 
-    if category:
-        items = items_search(category=category)
-    else:
-        items = items_search(item=item)
+    # Pass both parameters so items_search() can combine filters properly
+    items = items_search(item=item, category=category)
 
     return render_template("admin.html", username=current_user.username, items=items)
+
    
    
 @app.route('/admin/search', methods=['GET', 'POST'])
@@ -234,6 +271,21 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
+@app.route('/debug/categories')
+def debug_categories():
+    conn = get_db_connection()
+    conn.row_factory = sqlite3.Row
+    rows = conn.execute("SELECT DISTINCT category FROM items").fetchall()
+    conn.close()
+
+    # Print categories in your terminal
+    for row in rows:
+        print(f"'{row['category']}'")
+
+    # Also display them in the browser
+    return "<br>".join([f"'{row['category']}'" for row in rows])
+
+
 
 def get_db_connection():
     db_path = os.path.join('Final', 'WBHSLostProperty.db')
@@ -242,7 +294,13 @@ def get_db_connection():
     return conn
 
 
+
+
 if __name__ == '__main__':
     # init_db()
     app.run(debug=True)
+
+
+
+
     
