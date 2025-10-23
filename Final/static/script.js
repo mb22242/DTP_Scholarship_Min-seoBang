@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            const itemName = form.dataset.itemName || formData.item_name || "Unknown Item";
+            const itemName = form.dataset.itemName || formData.item_name || "New Report";
 
             const params = {
                 ...formData,
