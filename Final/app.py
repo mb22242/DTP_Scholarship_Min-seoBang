@@ -68,16 +68,15 @@ def index():
 
 @app.route("/claim")
 def claim():
-    item = request.args.get("item", "").replace(" ", "").lower()
+    search_item = request.args.get("item", "").replace(" ", "").lower()
     category = request.args.get("category", "")
 
     if category:  
         items = items_search(category=category)
     else:        
-        items = items_search(item=item)
+        items = items_search(item=search_item)
 
     return render_template("claim.html", items=items)
-
 
 
 @app.route('/claim_item/<int:item_id>', methods=['GET', 'POST'])
@@ -89,9 +88,6 @@ def claim_item(item_id):
     if not item:
         flash("Item not found.")
         return redirect(url_for('claim'))
-
-    if request.method == 'POST':
-        pass
 
     return render_template('claim_form.html', item=item)
 
@@ -109,33 +105,6 @@ def search_public():
     items = items_search(item)
     return render_template('claim.html', items=items)
 
-
-# def items_search(item="", category=None):
-#     conn = get_db_connection()
-#     raw_item = item.replace(' ', '').lower()
-
-#     sql = ""
-#     params = []
-
-#     # Filter by item name (search)
-#     if raw_item and raw_item.lower() != "search:":
-#         sql = "SELECT * FROM items WHERE REPLACE(LOWER(item_name), ' ', '') LIKE ?"
-#         params = [f"%{raw_item}%"]
-
-#     # Filter by category
-#     elif category and category != 'All':
-#         sql = "SELECT * FROM items WHERE category = ? COLLATE NOCASE"
-#         params = [category]
-    
-#     else:
-#         sql = "SELECT * FROM items"
-
-#     items = conn.execute(sql, params).fetchall()
-#     conn.close()
-
-#     if not items:
-#         flash("No matching items found.")
-#     return items
 
 def items_search(item="", category=None):
     conn = get_db_connection()
@@ -163,21 +132,6 @@ def items_search(item="", category=None):
     return items
 
 
-
-
-# @app.route('/admin', methods=('GET','POST'))
-# @login_required
-# def admin():
-#     item = request.args.get("item", "").replace(" ", "").lower()
-#     category = request.args.get("category", "All")
-
-#     if category:
-#         items = items_search(category=category)
-#     else:
-#         items = items_search(item=item)
-
-#     return render_template("admin.html", username=current_user.username, items=items)
-
 @app.route('/admin', methods=['GET', 'POST'])
 @login_required
 def admin():
@@ -189,7 +143,6 @@ def admin():
 
     return render_template("admin.html", username=current_user.username, items=items)
 
-   
    
 @app.route('/admin/search', methods=['GET', 'POST'])
 @login_required
@@ -227,6 +180,17 @@ def upload():
 def update_item(id):
     conn = get_db_connection()
     item = conn.execute('SELECT * FROM items WHERE id = ?', (id,)).fetchone()
+    conn.close()
+
+    categories = [
+        "Clothing & Accessories",
+        "Electronics",
+        "Stationery",
+        "Personal Items",
+        "Jewellery",
+        "Sports Equipment",
+        "Miscellaneous"
+    ]
 
     if request.method == 'POST':
         item_name = request.form['item_name']
@@ -234,18 +198,18 @@ def update_item(id):
         description = request.form['description']
         category = request.form['category']
 
+        conn = get_db_connection()
         conn.execute('''
             UPDATE items
             SET item_name = ?, name = ?, description = ?, category = ?
             WHERE id = ?
         ''', (item_name, name, description, category, id))
-
         conn.commit()
         conn.close()
+
         return redirect(url_for('admin'))
 
-    conn.close()
-    return render_template('update.html', item=item)
+    return render_template('update.html', item=item, categories=categories)
 
 
 @app.route('/admin/delete/<int:id>', methods=['POST', 'GET'])
@@ -271,29 +235,12 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
-@app.route('/debug/categories')
-def debug_categories():
-    conn = get_db_connection()
-    conn.row_factory = sqlite3.Row
-    rows = conn.execute("SELECT DISTINCT category FROM items").fetchall()
-    conn.close()
-
-    # Print categories in your terminal
-    for row in rows:
-        print(f"'{row['category']}'")
-
-    # Also display them in the browser
-    return "<br>".join([f"'{row['category']}'" for row in rows])
-
-
 
 def get_db_connection():
     db_path = os.path.join('Final', 'WBHSLostProperty.db')
     conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row
     return conn
-
-
 
 
 if __name__ == '__main__':

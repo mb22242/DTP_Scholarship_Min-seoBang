@@ -1,51 +1,27 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<script type="text/javascript"
-    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script type="text/javascript">
-    (function(){
-        emailjs.init({
-            publicKey: "YucshvHaQuTYTuku4",
-        });
+    (function() {
+        emailjs.init({ publicKey: "YucshvHaQuTYTuku4" });
     })();
 </script>
 {% endblock %}
 
 {% block body %}
-
 <h2 class="page_header">Report a Found Item</h2>
 
-<h2 id="report_title">Fill in the form to report the lost item you found</h2>
-
+<h2 id="report_title">Fill in the form to report a lost item you found</h2>
 
 <div class="form_container">
-    <form onsubmit="sendEmail(); reset(); return false">
-        <h3>Please enter your Name, your Email and a Description of your found item:</h3>
-        <input type="text" id="name" placeholder="Name:" required>
-        <br>
-        <input type="email" id="email" placeholder="Email:" required>
-        <br>
-        <textarea id="message" rows="4" placeholder="Description of item:"></textarea>
-        <br>
-        <h3>Our team will let you know as soon as we are ready to collect your found item.</h3>
+    <form id="report_form">
+        <h3>Please enter your Name, Email, and a Description of the found item:</h3>
+        <input type="text" id="name" name="name" placeholder="Name:" required><br>
+        <input type="email" id="email" name="email" placeholder="Email:" required><br>
+        <textarea id="message" name="message" rows="4" placeholder="Description of item:"></textarea><br>
+        <h3>Our team will contact you once we are ready to collect the item.</h3>
         <button type="submit">Send</button>
     </form>
 </div>
-
-
-
-<script>
-    function sendEmail(){
-        let parms = {
-            name : document.getElementById("name").value,
-            email : document.getElementById("email").value,
-            message : document.getElementById("message").value,
-        }
-        
-        emailjs.send("service_lirsgks","template_kxb4e5d",parms).then(alert('Email has been sent'))
-    }
-</script>
-
 {% endblock %}

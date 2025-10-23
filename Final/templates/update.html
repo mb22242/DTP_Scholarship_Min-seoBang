@@ -19,16 +19,15 @@
         <textarea id="upload_text" name="description" id="description" required>{{ item.description }}</textarea><br><br>
 
         <h2>Category:</h2>
-        <select id="upload_category" name="category">
+        <select id="upload_category" name="category" required>
             <option value="">Select Category</option>
-            <option value="Clothing & Accessories">Clothing & Accessories</option>
-            <option value="Electronics">Electronics</option>
-            <option value="Stationery">Stationery</option>
-            <option value="Personal Items">Personal Items</option>
-            <option value="Jewellery">Jewellery</option>
-            <option value="Sports Equipment">Sports Equipment</option>
-            <option value="Miscellaneous">Miscellaneous</option>
+            {% for category in categories %}
+                <option value="{{ category }}" {% if item['category'] == category %}selected{% endif %}>
+                    {{ category }}
+                </option>
+            {% endfor %}
         </select>
+
         <br><br>
         <h2>Change Image:</h2><br>
         <input id='upload_image' type="file" name="image"><br><br>
