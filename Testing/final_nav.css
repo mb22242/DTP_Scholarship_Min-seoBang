@@ -78,6 +78,17 @@
     width: 275px;
 }
 
+.side-menu.active ul li a,
+.side-menu.active ul li h2 {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.side-menu.active ul li a,
+.side-menu.active h2 {
+    font-size: 40px;
+}
+
 .side_menu_top {
     display: flex;
     /* background: pink; */
@@ -137,17 +148,6 @@
 .side-menu ul li a:hover {
     margin-left: 30px;
     transition: all ease 0.5s
-}
-
-.side-menu.active ul li a,
-.side-menu.active ul li h2 {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.side-menu.active ul li a,
-.side-menu.active h2 {
-    font-size: 40px;
 }
 
 /* Menu icon */

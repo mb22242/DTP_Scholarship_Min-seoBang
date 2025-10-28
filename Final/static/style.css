@@ -708,6 +708,7 @@ body {
     margin: 0 auto;
     margin-top: 50px;
     padding: 30px 0px;
+    margin-bottom: 50px;
 }
 
 #upload_container h1 {
@@ -723,7 +724,7 @@ body {
 }
 
 #upload_input{
-    width: 33.33%;
+    width: 60%;
     padding: 10px;
     height: 15px;
     border: 2px solid black;
@@ -732,14 +733,14 @@ body {
 }
 
 #upload_text {
-    width: 33.33%;
+    width: 60%;
     height: 100px;
     border-radius: 8px;
     font-size: 20px;
 }
 
 #upload_category {
-    width: 33.33%;
+    width: 60%;
     height: 40px;
     font-size: 15px;
     text-align: center;

@@ -183,7 +183,7 @@ def update_item(id):
     conn.close()
 
     categories = [
-        "Clothing & Accessories",
+        "Clothing and Accessories",
         "Electronics",
         "Stationery",
         "Personal Items",
